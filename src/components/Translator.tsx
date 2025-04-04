@@ -31,42 +31,40 @@ const Translator: React.FC = () => {
   }, []);
 
   return (
-    <div className="custom-card max-w-2xl w-full mx-auto animate-fade-in">
-      <h2 className="text-2xl font-bold mb-8 text-center uppercase tracking-wider">Traductor</h2>
-      
-      <div className="space-y-8">
+    <div className="max-w-2xl w-full mx-auto border border-black animate-fade-in bg-white">
+      <div className="p-8 space-y-8">
         <div>
-          <label htmlFor="design-text" className="block text-sm font-medium mb-3 text-translator-text/90 uppercase tracking-wider">
+          <label htmlFor="design-text" className="block text-sm font-mono mb-4 text-translator-text uppercase tracking-wider">
             Cuando diseño dice:
           </label>
           <div
             id="design-text"
-            className="textarea-field w-full resize-none"
+            className="font-serif text-xl p-5 min-h-[120px] border border-black w-full font-medium"
           >
             {isLoading ? (
-              <div className="animate-pulse h-6 bg-translator-accent/10 rounded w-3/4 mx-auto mt-4"></div>
+              <div className="animate-pulse h-6 bg-gray-100 w-3/4 mx-auto mt-4"></div>
             ) : (
               translationPair.design
             )}
           </div>
         </div>
         
-        <div className="flex justify-center my-6">
-          <div className={`p-2 rounded-full bg-translator-secondary/10 ${showAnimation ? 'animate-bounce-light' : ''}`}>
-            <ArrowDown className="h-5 w-5 text-translator-secondary" />
+        <div className="flex justify-center py-3">
+          <div className={`${showAnimation ? 'animate-bounce-light' : ''}`}>
+            <ArrowDown className="h-5 w-5 text-black" />
           </div>
         </div>
         
         <div>
-          <label htmlFor="business-text" className="block text-sm font-medium mb-3 text-translator-text/90 uppercase tracking-wider">
+          <label htmlFor="business-text" className="block text-sm font-mono mb-4 text-translator-text uppercase tracking-wider">
             Negocio debería entender:
           </label>
           <div
             id="business-text"
-            className="textarea-field w-full resize-none"
+            className="font-serif text-xl p-5 min-h-[120px] border border-black w-full font-medium"
           >
             {isLoading ? (
-              <div className="animate-pulse h-6 bg-translator-accent/10 rounded w-3/4 mx-auto mt-4"></div>
+              <div className="animate-pulse h-6 bg-gray-100 w-3/4 mx-auto mt-4"></div>
             ) : (
               translationPair.business
             )}
@@ -84,9 +82,11 @@ const Translator: React.FC = () => {
         </div>
       </div>
       
-      <p className="text-center text-xs text-translator-text/50 mt-10">
-        Diseño y negocio. Dos mundos, un lenguaje.
-      </p>
+      <div className="border-t border-black py-3 px-8">
+        <p className="text-center text-xs font-mono text-translator-text/70">
+          Diseño y negocio. Dos mundos, un lenguaje.
+        </p>
+      </div>
     </div>
   );
 };

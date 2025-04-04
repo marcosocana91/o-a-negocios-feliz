@@ -30,7 +30,7 @@ const TranslateButton: React.FC<TranslateButtonProps> = ({
 
   return (
     <button 
-      className={`translate-button flex items-center justify-center gap-2 ${isAnimating ? 'animate-bounce-light' : ''}`}
+      className={`flex items-center justify-center gap-2 py-2 px-8 bg-black text-white font-mono text-sm uppercase ${isAnimating ? 'animate-bounce-light' : ''}`}
       onClick={handleClick}
     >
       <span>{text}</span>

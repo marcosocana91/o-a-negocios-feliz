@@ -64,8 +64,8 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				translator: {
-					light: '#F9F9F9',
-					accent: '#E63E31',
+					light: '#FFFFFF',
+					accent: '#000000',
 					secondary: '#555555',
 					tertiary: '#888888',
 					text: '#222222'
@@ -73,7 +73,8 @@ export default {
 			},
 			fontFamily: {
 				'sans': ['Inter', 'sans-serif'],
-				'mono': ['IBM Plex Mono', 'monospace']
+				'mono': ['IBM Plex Mono', 'monospace'],
+				'serif': ['Playfair Display', 'serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

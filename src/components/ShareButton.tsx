@@ -47,7 +47,7 @@ const ShareButton: React.FC<ShareButtonProps> = ({ designText, businessText }) =
   return (
     <button 
       onClick={handleShare}
-      className="share-button flex items-center justify-center gap-2"
+      className="flex items-center justify-center gap-2 py-2 px-8 border border-black font-mono text-sm uppercase transition-colors hover:bg-black hover:text-white"
       aria-label="Compartir traducción"
     >
       <Share2 className="h-4 w-4" />

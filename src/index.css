@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=IBM+Plex+Mono:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=IBM+Plex+Mono:wght@300;400;700&family=Playfair+Display:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -25,7 +25,7 @@
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 0 72% 51%;
+    --accent: 0 0% 0%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
@@ -43,32 +43,20 @@
   }
 
   body {
-    @apply bg-translator-light text-translator-text font-sans;
+    @apply bg-white text-black font-sans;
     cursor: url('/cursor-normal.svg'), auto;
   }
 
-  .button-sound {
-    @apply transition-all duration-300;
+  .animate-bounce-light {
+    animation: bounce-light 0.5s ease-in-out;
   }
 
-  .textarea-field {
-    @apply p-5 bg-white border-2 border-translator-accent/10 focus:ring-0 focus:border-translator-accent/30 focus:outline-none font-mono leading-relaxed;
-    min-height: 120px;
-  }
-
-  .custom-card {
-    @apply bg-white p-8 shadow-md border-t-4 border-translator-accent;
-  }
-
-  .translate-button {
-    @apply bg-translator-text text-white font-bold py-3 px-8 transition-all duration-300 focus:outline-none hover:bg-translator-text/90 active:scale-95 uppercase tracking-wider text-sm;
-  }
-
-  .share-button {
-    @apply bg-transparent text-translator-text border-2 border-translator-text/20 font-bold py-2 px-4 transition-all duration-300 focus:outline-none hover:border-translator-text/40 uppercase tracking-wider text-sm;
-  }
-
-  .text-gradient {
-    @apply bg-gradient-to-r from-translator-accent via-translator-secondary to-translator-accent bg-clip-text text-transparent;
+  @keyframes bounce-light {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
   }
 }
