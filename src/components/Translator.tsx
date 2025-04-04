@@ -34,12 +34,12 @@ const Translator: React.FC = () => {
   }, []);
 
   return (
-    <div className="max-w-2xl w-full mx-auto border-2 border-black animate-fade-in bg-white">
+    <div className="max-w-2xl w-full mx-auto border-2 border-black bg-white">
       <ConfettiEffect trigger={confettiTrigger} />
       
-      <div className="p-8 space-y-8">
+      <div className="p-6 sm:p-8 space-y-8">
         <div>
-          <label htmlFor="design-text" className="block text-sm font-mono mb-4 text-translator-text uppercase tracking-wider">
+          <label htmlFor="design-text" className="block text-sm font-mono mb-4 uppercase tracking-wider">
             Cuando diseño dice:
           </label>
           <div
@@ -61,7 +61,7 @@ const Translator: React.FC = () => {
         </div>
         
         <div>
-          <label htmlFor="business-text" className="block text-sm font-mono mb-4 text-translator-text uppercase tracking-wider">
+          <label htmlFor="business-text" className="block text-sm font-mono mb-4 uppercase tracking-wider">
             Negocio debería entender:
           </label>
           <div

@@ -1,0 +1,46 @@
+
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+
+const Navigation: React.FC = () => {
+  const location = useLocation();
+  
+  return (
+    <nav className="border-b-2 border-black py-4">
+      <div className="container mx-auto px-4 flex justify-between items-center">
+        <div className="font-bold font-mono uppercase text-md tracking-widest">
+          Traductor
+        </div>
+        
+        <div className="flex space-x-6">
+          <Link 
+            to="/" 
+            className={`font-mono uppercase text-sm tracking-wider ${
+              location.pathname === '/' ? 'underline' : ''
+            }`}
+          >
+            Home
+          </Link>
+          <Link 
+            to="/manifesto" 
+            className={`font-mono uppercase text-sm tracking-wider ${
+              location.pathname === '/manifesto' ? 'underline' : ''
+            }`}
+          >
+            Manifiesto
+          </Link>
+          <Link 
+            to="/quiz" 
+            className={`font-mono uppercase text-sm tracking-wider ${
+              location.pathname === '/quiz' ? 'underline' : ''
+            }`}
+          >
+            Quiz
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navigation;

@@ -58,4 +58,14 @@
       transform: translateY(-5px);
     }
   }
+  
+  /* Button hover effect */
+  button {
+    @apply transition-all duration-200;
+  }
+  
+  /* Links styling */
+  a {
+    @apply transition-all duration-200;
+  }
 }

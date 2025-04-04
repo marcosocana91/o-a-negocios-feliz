@@ -64,6 +64,46 @@ export const translationPairs: TranslationPair[] = [
   {
     design: "Este flujo tiene demasiados pasos",
     business: "Tenemos una tasa de abandono del 40% en este proceso"
+  },
+  {
+    design: "Necesitamos un sistema de diseño cohesivo",
+    business: "Debemos reducir la deuda técnica y mejorar la velocidad de implementación"
+  },
+  {
+    design: "Esta página necesita más patrones de interacción",
+    business: "Necesitamos aumentar el tiempo de permanencia y engagement en la plataforma"
+  },
+  {
+    design: "Deberíamos añadir animaciones sutiles",
+    business: "Hay que mejorar las microinteracciones para incrementar la percepción de calidad"
+  },
+  {
+    design: "La densidad de información es excesiva",
+    business: "Estamos sobrecargando cognitivamente a los usuarios y reduciendo la conversión"
+  },
+  {
+    design: "El diseño debe ser más minimalista",
+    business: "Debemos enfocar la atención del usuario en las acciones de mayor valor"
+  },
+  {
+    design: "Los bordes son demasiado redondeados",
+    business: "La imagen de marca requiere un aspecto más serio y profesional"
+  },
+  {
+    design: "Este menú necesita mejor organización",
+    business: "Estamos reduciendo el descubrimiento de funcionalidades clave"
+  },
+  {
+    design: "Debemos hacer pruebas de usabilidad",
+    business: "Necesitamos validar nuestras hipótesis de diseño con usuarios reales"
+  },
+  {
+    design: "Este diseño no es adaptable a móvil",
+    business: "Estamos perdiendo el 60% del tráfico potencial"
+  },
+  {
+    design: "Los tiempos de carga son demasiado largos",
+    business: "Cada segundo extra reduce nuestra tasa de conversión un 7%"
   }
 ];
 
