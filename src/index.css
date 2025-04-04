@@ -44,7 +44,6 @@
 
   body {
     @apply bg-white text-black font-sans;
-    cursor: url('/cursor-normal.svg'), auto;
   }
 
   .animate-bounce-light {
