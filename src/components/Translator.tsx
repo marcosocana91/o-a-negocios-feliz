@@ -32,12 +32,12 @@ const Translator: React.FC = () => {
 
   return (
     <div className="custom-card max-w-2xl w-full mx-auto animate-fade-in">
-      <h2 className="text-2xl font-bold mb-6 text-center text-gradient">Traductor Diseño–Negocio</h2>
+      <h2 className="text-2xl font-bold mb-8 text-center uppercase tracking-wider">Traductor</h2>
       
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div>
-          <label htmlFor="design-text" className="block text-sm font-medium mb-2 text-translator-text/80">
-            ✨ Diseño dice:
+          <label htmlFor="design-text" className="block text-sm font-medium mb-3 text-translator-text/90 uppercase tracking-wider">
+            Cuando diseño dice:
           </label>
           <div
             id="design-text"
@@ -51,15 +51,15 @@ const Translator: React.FC = () => {
           </div>
         </div>
         
-        <div className="flex justify-center my-4">
+        <div className="flex justify-center my-6">
           <div className={`p-2 rounded-full bg-translator-secondary/10 ${showAnimation ? 'animate-bounce-light' : ''}`}>
-            <ArrowDown className="h-6 w-6 text-translator-secondary" />
+            <ArrowDown className="h-5 w-5 text-translator-secondary" />
           </div>
         </div>
         
         <div>
-          <label htmlFor="business-text" className="block text-sm font-medium mb-2 text-translator-text/80">
-            💼 Negocio entiende:
+          <label htmlFor="business-text" className="block text-sm font-medium mb-3 text-translator-text/90 uppercase tracking-wider">
+            Negocio debería entender:
           </label>
           <div
             id="business-text"
@@ -73,8 +73,8 @@ const Translator: React.FC = () => {
           </div>
         </div>
         
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-          <TranslateButton onClick={generateTranslation} />
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
+          <TranslateButton onClick={generateTranslation} text="Traducir ahora" />
           {!isLoading && translationPair.design && (
             <ShareButton 
               designText={translationPair.design}
@@ -84,8 +84,8 @@ const Translator: React.FC = () => {
         </div>
       </div>
       
-      <p className="text-center text-xs text-translator-text/50 mt-8">
-        Creado con ❤️ para mejorar la comunicación entre diseñadores y directivos
+      <p className="text-center text-xs text-translator-text/50 mt-10">
+        Diseño y negocio. Dos mundos, un lenguaje.
       </p>
     </div>
   );

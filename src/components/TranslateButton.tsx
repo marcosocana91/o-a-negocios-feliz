@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface TranslateButtonProps {
   onClick: () => void;
@@ -9,7 +9,7 @@ interface TranslateButtonProps {
 
 const TranslateButton: React.FC<TranslateButtonProps> = ({ 
   onClick, 
-  text = "¡Traduce esto!" 
+  text = "Traducir ahora" 
 }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -33,8 +33,8 @@ const TranslateButton: React.FC<TranslateButtonProps> = ({
       className={`translate-button flex items-center justify-center gap-2 ${isAnimating ? 'animate-bounce-light' : ''}`}
       onClick={handleClick}
     >
-      <Sparkles className="h-5 w-5" />
       <span>{text}</span>
+      <ArrowRight className="h-4 w-4" />
     </button>
   );
 };

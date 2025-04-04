@@ -64,16 +64,16 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				translator: {
-					light: '#FEF7F2',
-					accent: '#FF7A50',
-					secondary: '#6F9EFF',
-					tertiary: '#9D8DF1',
-					text: '#4A4A4A'
+					light: '#F9F9F9',
+					accent: '#E63E31',
+					secondary: '#555555',
+					tertiary: '#888888',
+					text: '#222222'
 				}
 			},
 			fontFamily: {
-				'sans': ['Nunito', 'sans-serif'],
-				'serif': ['Merriweather', 'serif']
+				'sans': ['Inter', 'sans-serif'],
+				'mono': ['IBM Plex Mono', 'monospace']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

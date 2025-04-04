@@ -10,7 +10,7 @@ interface ShareButtonProps {
 
 const ShareButton: React.FC<ShareButtonProps> = ({ designText, businessText }) => {
   const handleShare = async () => {
-    const shareText = `✨ Diseño dice: "${designText}"\n\n💼 Negocio entiende: "${businessText}"\n\nTraducido con Traductor Diseño-Negocio`;
+    const shareText = `Cuando diseño dice: "${designText}"\n\nNegocio debería entender: "${businessText}"\n\nTraducido con Traductor Diseño-Negocio`;
     
     if (navigator.share) {
       try {
@@ -30,12 +30,12 @@ const ShareButton: React.FC<ShareButtonProps> = ({ designText, businessText }) =
   };
 
   const copyToClipboard = () => {
-    const shareText = `✨ Diseño dice: "${designText}"\n\n💼 Negocio entiende: "${businessText}"\n\nTraducido con Traductor Diseño-Negocio`;
+    const shareText = `Cuando diseño dice: "${designText}"\n\nNegocio debería entender: "${businessText}"\n\nTraducido con Traductor Diseño-Negocio`;
     
     navigator.clipboard.writeText(shareText)
       .then(() => {
-        toast.success('¡Copiado al portapapeles!', {
-          description: 'Ahora puedes pegarlo donde quieras'
+        toast.success('Copiado', {
+          description: 'Texto copiado al portapapeles'
         });
       })
       .catch((err) => {
