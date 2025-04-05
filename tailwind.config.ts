@@ -72,8 +72,8 @@ export default {
 				}
 			},
 			fontFamily: {
-				'sans': ['Inter', 'sans-serif'],
-				'mono': ['IBM Plex Mono', 'monospace'],
+				'sans': ['Inter', 'system-ui', 'sans-serif'],
+				'mono': ['Space Mono', 'IBM Plex Mono', 'monospace'],
 				'serif': ['Playfair Display', 'serif']
 			},
 			borderRadius: {
@@ -125,6 +125,9 @@ export default {
 			},
 			cursor: {
 				'custom': 'url("/cursor.svg"), pointer'
+			},
+			backgroundImage: {
+				'grid-pattern': 'url("/lovable-uploads/b278ef02-65c5-4d30-91f0-da73f0dbc1cc.png")'
 			}
 		}
 	},

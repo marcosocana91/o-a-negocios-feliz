@@ -5,6 +5,8 @@ import WelcomeModal from '../components/WelcomeModal';
 import Navigation from '../components/Navigation';
 import FooterBanner from '../components/FooterBanner';
 import { useLanguage } from '../context/LanguageContext';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 const Index = () => {
   const { t } = useLanguage();
@@ -28,14 +30,14 @@ const Index = () => {
   };
   
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col">
       {showModal && <WelcomeModal onClose={handleCloseModal} />}
       
       <Navigation />
       
-      <div className="flex-grow flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
-        <div className="mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 uppercase tracking-widest border-b-2 border-black pb-4">
+      <div className="flex-grow container mx-auto px-4 py-8 md:py-16">
+        <div className="mb-8 md:mb-12 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 uppercase tracking-widest font-mono border-b-2 border-black pb-4 inline-block">
             {t("translator.title")}
           </h1>
           <p className="text-translator-text/70 text-xs uppercase tracking-wide mb-0 font-mono">
@@ -44,6 +46,16 @@ const Index = () => {
         </div>
         
         <Translator />
+        
+        <div className="mt-12 text-center">
+          <Link 
+            to="/quiz"
+            className="inline-flex items-center gap-2 py-3 px-10 bg-black text-white font-mono text-sm uppercase hover:bg-white hover:text-black hover:border-2 hover:border-black transition-colors"
+          >
+            <span>Quiz</span>
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
       
       <FooterBanner />

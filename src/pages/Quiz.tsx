@@ -4,6 +4,7 @@ import { translationPairs } from '../data/translationPairs';
 import { ArrowRight } from 'lucide-react';
 import FooterBanner from '../components/FooterBanner';
 import { useLanguage } from '../context/LanguageContext';
+import Navigation from '../components/Navigation';
 
 const Quiz: React.FC = () => {
   const { language } = useLanguage();
@@ -61,24 +62,29 @@ const Quiz: React.FC = () => {
   
   if (!quizStarted) {
     return (
-      <div className="min-h-screen flex flex-col bg-white">
-        <div className="flex-grow container mx-auto px-4 py-16 max-w-3xl flex flex-col items-center justify-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-12 uppercase tracking-widest border-b-2 border-black pb-4 text-center">
-            Quiz
-          </h1>
-          
-          <div className="font-serif text-lg text-center mb-12">
-            <p>Pon a prueba tus habilidades de traducción entre diseño y negocio</p>
-            <p className="mt-4">¿Puedes identificar la traducción correcta para cada expresión de diseño?</p>
+      <div className="min-h-screen flex flex-col">
+        <Navigation />
+        <div className="flex-grow container mx-auto px-4 py-8 md:py-16 max-w-4xl flex flex-col items-center justify-center">
+          <div className="content-box w-full max-w-2xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold mb-8 uppercase tracking-widest font-mono text-center">
+              Quiz
+            </h1>
+            
+            <div className="font-sans text-lg text-center mb-12">
+              <p>Pon a prueba tus habilidades de traducción entre diseño y negocio</p>
+              <p className="mt-4">¿Puedes identificar la traducción correcta para cada expresión de diseño?</p>
+            </div>
+            
+            <div className="flex justify-center">
+              <button 
+                onClick={startQuiz}
+                className="flex items-center justify-center gap-2 py-3 px-10 bg-black text-white font-mono text-md uppercase hover:bg-white hover:text-black hover:border-2 hover:border-black transition-colors"
+              >
+                <span>Comenzar Quiz</span>
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
           </div>
-          
-          <button 
-            onClick={startQuiz}
-            className="flex items-center justify-center gap-2 py-3 px-10 bg-black text-white font-mono text-md uppercase hover:bg-white hover:text-black hover:border-2 hover:border-black transition-colors"
-          >
-            <span>Comenzar Quiz</span>
-            <ArrowRight className="h-4 w-4" />
-          </button>
         </div>
         
         <FooterBanner />
@@ -88,31 +94,36 @@ const Quiz: React.FC = () => {
   
   if (quizFinished) {
     return (
-      <div className="min-h-screen flex flex-col bg-white">
-        <div className="flex-grow container mx-auto px-4 py-16 max-w-3xl flex flex-col items-center justify-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-12 uppercase tracking-widest border-b-2 border-black pb-4 text-center">
-            Resultados
-          </h1>
-          
-          <div className="font-serif text-lg text-center mb-12 space-y-6">
-            <p className="text-2xl font-bold">Tu puntuación: {score} de {quizQuestions.length}</p>
+      <div className="min-h-screen flex flex-col">
+        <Navigation />
+        <div className="flex-grow container mx-auto px-4 py-8 md:py-16 max-w-4xl flex flex-col items-center justify-center">
+          <div className="content-box w-full max-w-2xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold mb-8 uppercase tracking-widest font-mono text-center">
+              Resultados
+            </h1>
             
-            {score === quizQuestions.length ? (
-              <p>¡Perfecto! Eres un auténtico traductor entre diseño y negocio.</p>
-            ) : score >= quizQuestions.length * 0.7 ? (
-              <p>¡Buen trabajo! Tienes un gran dominio del lenguaje de diseño y negocio.</p>
-            ) : (
-              <p>¡Sigue practicando! Con el tiempo dominarás ambos lenguajes.</p>
-            )}
+            <div className="font-sans text-lg text-center mb-12 space-y-6">
+              <p className="text-2xl font-bold">Tu puntuación: {score} de {quizQuestions.length}</p>
+              
+              {score === quizQuestions.length ? (
+                <p>¡Perfecto! Eres un auténtico traductor entre diseño y negocio.</p>
+              ) : score >= quizQuestions.length * 0.7 ? (
+                <p>¡Buen trabajo! Tienes un gran dominio del lenguaje de diseño y negocio.</p>
+              ) : (
+                <p>¡Sigue practicando! Con el tiempo dominarás ambos lenguajes.</p>
+              )}
+            </div>
+            
+            <div className="flex justify-center">
+              <button 
+                onClick={restartQuiz}
+                className="flex items-center justify-center gap-2 py-3 px-10 bg-black text-white font-mono text-md uppercase hover:bg-white hover:text-black hover:border-2 hover:border-black transition-colors"
+              >
+                <span>Reiniciar Quiz</span>
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
           </div>
-          
-          <button 
-            onClick={restartQuiz}
-            className="flex items-center justify-center gap-2 py-3 px-10 bg-black text-white font-mono text-md uppercase hover:bg-white hover:text-black hover:border-2 hover:border-black transition-colors"
-          >
-            <span>Reiniciar Quiz</span>
-            <ArrowRight className="h-4 w-4" />
-          </button>
         </div>
         
         <FooterBanner />
@@ -123,56 +134,59 @@ const Quiz: React.FC = () => {
   const currentQuestion = quizQuestions[currentQuestionIndex];
   
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <div className="flex-grow container mx-auto px-4 py-16 max-w-3xl">
-        <h1 className="text-4xl md:text-5xl font-bold mb-12 uppercase tracking-widest border-b-2 border-black pb-4">
-          Quiz
-        </h1>
-        
-        <div className="mb-6 font-mono uppercase text-sm tracking-wider">
-          Pregunta {currentQuestionIndex + 1} de {quizQuestions.length}
-        </div>
-        
-        <div className="font-serif text-xl mb-8 border-2 border-black p-6">
-          <div className="mb-2 font-mono uppercase text-sm tracking-wider">Cuando diseño dice:</div>
-          <div>{currentQuestion.question}</div>
-        </div>
-        
-        <div className="mb-2 font-mono uppercase text-sm tracking-wider">
-          Negocio debería entender:
-        </div>
-        
-        <div className="space-y-4 mb-12">
-          {currentQuestion.options.map((option, index) => (
-            <div 
-              key={index}
-              onClick={() => handleOptionSelect(option)}
-              className={`border-2 p-6 font-serif text-lg cursor-pointer transition-colors ${
-                selectedOption === option 
-                  ? option === currentQuestion.correctAnswer
-                    ? "border-green-500 bg-green-50"
-                    : "border-red-500 bg-red-50"
-                  : "border-black hover:bg-black hover:text-white"
-              } ${
-                showAnswer && option === currentQuestion.correctAnswer && "border-green-500 bg-green-50"
-              }`}
-            >
-              {option}
-            </div>
-          ))}
-        </div>
-        
-        {showAnswer && (
-          <div className="flex justify-center">
-            <button 
-              onClick={handleNextQuestion}
-              className="flex items-center justify-center gap-2 py-3 px-10 bg-black text-white font-mono text-md uppercase"
-            >
-              <span>Siguiente</span>
-              <ArrowRight className="h-4 w-4" />
-            </button>
+    <div className="min-h-screen flex flex-col">
+      <Navigation />
+      <div className="flex-grow container mx-auto px-4 py-8 md:py-16 max-w-4xl">
+        <div className="content-box">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 uppercase tracking-widest font-mono">
+            Quiz
+          </h1>
+          
+          <div className="mb-6 font-mono uppercase text-sm tracking-wider">
+            Pregunta {currentQuestionIndex + 1} de {quizQuestions.length}
           </div>
-        )}
+          
+          <div className="font-sans text-xl mb-8 border-2 border-black p-6">
+            <div className="mb-2 font-mono uppercase text-sm tracking-wider">Cuando diseño dice:</div>
+            <div>{currentQuestion.question}</div>
+          </div>
+          
+          <div className="mb-2 font-mono uppercase text-sm tracking-wider">
+            Negocio debería entender:
+          </div>
+          
+          <div className="space-y-4 mb-12">
+            {currentQuestion.options.map((option, index) => (
+              <div 
+                key={index}
+                onClick={() => handleOptionSelect(option)}
+                className={`border-2 p-6 font-sans text-lg cursor-pointer transition-colors ${
+                  selectedOption === option 
+                    ? option === currentQuestion.correctAnswer
+                      ? "border-green-500 bg-green-50"
+                      : "border-red-500 bg-red-50"
+                    : "border-black hover:bg-black hover:text-white"
+                } ${
+                  showAnswer && option === currentQuestion.correctAnswer && "border-green-500 bg-green-50"
+                }`}
+              >
+                {option}
+              </div>
+            ))}
+          </div>
+          
+          {showAnswer && (
+            <div className="flex justify-center">
+              <button 
+                onClick={handleNextQuestion}
+                className="flex items-center justify-center gap-2 py-3 px-10 bg-black text-white font-mono text-md uppercase hover:bg-white hover:text-black hover:border-2 hover:border-black transition-colors"
+              >
+                <span>Siguiente</span>
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
+          )}
+        </div>
       </div>
       
       <FooterBanner />

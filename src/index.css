@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=IBM+Plex+Mono:wght@300;400;700&family=Playfair+Display:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=IBM+Plex+Mono:wght@300;400;700&family=Playfair+Display:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -43,7 +43,13 @@
   }
 
   body {
-    @apply bg-white text-black font-sans;
+    @apply bg-grid-pattern text-black font-sans;
+    background-size: 24px 24px;
+    background-position: 0 0;
+  }
+
+  .content-box {
+    @apply bg-white border-2 border-black p-6 md:p-8 mb-6;
   }
 
   .animate-bounce-light {

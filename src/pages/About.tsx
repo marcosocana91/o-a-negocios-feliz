@@ -8,30 +8,32 @@ const About: React.FC = () => {
   const { t } = useLanguage();
   
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col">
       <Navigation />
       
-      <div className="flex-grow container mx-auto px-4 py-16 max-w-3xl">
-        <h1 className="text-4xl md:text-5xl font-bold mb-12 uppercase tracking-widest border-b-2 border-black pb-4">
-          {t("about.title")}
-        </h1>
-        
-        <div className="font-serif text-lg space-y-6">
-          <p>
-            {t("about.p1")}
-          </p>
+      <div className="flex-grow container mx-auto px-4 py-8 md:py-16 max-w-4xl">
+        <div className="content-box">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 uppercase tracking-widest font-mono">
+            {t("about.title")}
+          </h1>
           
-          <p>
-            {t("about.p2")}
-          </p>
-          
-          <p>
-            {t("about.p3")}
-          </p>
-          
-          <p>
-            {t("about.p4")}
-          </p>
+          <div className="font-sans text-lg space-y-6">
+            <p>
+              {t("about.p1")}
+            </p>
+            
+            <p>
+              {t("about.p2")}
+            </p>
+            
+            <p>
+              {t("about.p3")}
+            </p>
+            
+            <p>
+              {t("about.p4")}
+            </p>
+          </div>
         </div>
       </div>
       

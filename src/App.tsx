@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Manifesto from "./pages/Manifesto";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import Quiz from "./pages/Quiz";
 import { LanguageProvider } from "./context/LanguageContext";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/manifesto" element={<Manifesto />} />
             <Route path="/about" element={<About />} />
+            <Route path="/quiz" element={<Quiz />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

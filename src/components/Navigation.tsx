@@ -3,6 +3,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import LanguageSelector from './LanguageSelector';
 import { useLanguage } from '../context/LanguageContext';
+import MobileMenu from './MobileMenu';
 
 const Navigation: React.FC = () => {
   const location = useLocation();
@@ -15,7 +16,7 @@ const Navigation: React.FC = () => {
           When design says...
         </div>
         
-        <div className="flex space-x-6 items-center">
+        <div className="hidden md:flex space-x-6 items-center">
           <Link 
             to="/" 
             className={`font-mono uppercase text-sm tracking-wider ${
@@ -42,6 +43,8 @@ const Navigation: React.FC = () => {
           </Link>
           <LanguageSelector />
         </div>
+        
+        <MobileMenu />
       </div>
     </nav>
   );
