@@ -53,22 +53,18 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				},
-				translator: {
-					light: '#FFFFFF',
-					accent: '#000000',
-					secondary: '#555555',
-					tertiary: '#888888',
-					text: '#222222'
+				brutalist: {
+					'50': '#f9f9f9',
+					'100': '#f0f0f0',
+					'200': '#e4e4e4',
+					'300': '#d1d1d1',
+					'400': '#b4b4b4',
+					'500': '#9a9a9a',
+					'600': '#818181',
+					'700': '#6a6a6a',
+					'800': '#5a5a5a',
+					'900': '#4e4e4e',
+					'950': '#282828',
 				}
 			},
 			fontFamily: {
@@ -122,12 +118,6 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',
 				'bounce-light': 'bounce-light 0.5s ease-in-out'
-			},
-			cursor: {
-				'custom': 'url("/cursor.svg"), pointer'
-			},
-			backgroundImage: {
-				'grid-pattern': 'url("/lovable-uploads/b278ef02-65c5-4d30-91f0-da73f0dbc1cc.png")'
 			}
 		}
 	},

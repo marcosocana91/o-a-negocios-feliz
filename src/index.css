@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=IBM+Plex+Mono:wght@300;400;700&family=Playfair+Display:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,35 +7,35 @@
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 0 0% 10%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card: 0 0% 95%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 0 0% 10%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 50%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 0 0% 80%;
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 0 0% 0%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 0 0% 85%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
+    --border: 0 0% 80%;
     --input: 0 0% 90%;
-    --ring: 0 0% 75%;
+    --ring: 0 0% 0%;
 
-    --radius: 0;
+    --radius: 0rem;
   }
 
   * {
@@ -43,35 +43,79 @@
   }
 
   body {
-    @apply bg-grid-pattern text-black font-sans;
-    background-size: 24px 24px;
-    background-position: 0 0;
+    @apply bg-background text-foreground font-mono;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+}
+
+@layer components {
+  .brutalist-border {
+    @apply border-2 border-black;
   }
 
+  .brutalist-box {
+    @apply brutalist-border bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)];
+  }
+
+  .brutalist-box-hover {
+    @apply brutalist-box transition-all duration-200 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px];
+  }
+  
+  .brutalist-input {
+    @apply brutalist-border px-3 py-2 bg-white w-full focus:outline-none focus:ring-0 focus:bg-brutalist-50;
+  }
+  
+  .brutalist-btn {
+    @apply brutalist-border bg-black text-white px-4 py-2 cursor-pointer font-bold hover:bg-white hover:text-black transition-colors duration-200;
+  }
+  
+  .brutalist-btn-secondary {
+    @apply brutalist-border bg-white text-black px-4 py-2 cursor-pointer font-bold hover:bg-black hover:text-white transition-colors duration-200;
+  }
+  
+  .brutalist-title {
+    @apply text-3xl md:text-4xl lg:text-6xl font-bold uppercase tracking-tight;
+  }
+
+  .brutalist-wireframe {
+    @apply border-dashed border-2 border-brutalist-400 bg-transparent p-4;
+  }
+  
+  .brutalist-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  }
+
+  /* New responsive table styles */
+  .responsive-table {
+    @apply w-full overflow-x-auto;
+  }
+  
+  .responsive-table table {
+    @apply min-w-full;
+  }
+  
+  .responsive-text {
+    @apply break-words;
+  }
+  
+  /* Fix for options in quiz to wrap properly */
+  .quiz-option {
+    @apply flex flex-wrap items-start;
+  }
+  
+  .quiz-option-label {
+    @apply inline-block w-8 text-center flex-shrink-0;
+  }
+  
+  .quiz-option-text {
+    @apply flex-1 break-words;
+  }
+  
+  /* Content box redefined to match TheLastDesigner.art style */
   .content-box {
-    @apply bg-white border-2 border-black p-6 md:p-8 mb-6;
-  }
-
-  .animate-bounce-light {
-    animation: bounce-light 0.5s ease-in-out;
-  }
-
-  @keyframes bounce-light {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-5px);
-    }
-  }
-  
-  /* Button hover effect */
-  button {
-    @apply transition-all duration-200;
-  }
-  
-  /* Links styling */
-  a {
-    @apply transition-all duration-200;
+    @apply brutalist-box my-6;
   }
 }

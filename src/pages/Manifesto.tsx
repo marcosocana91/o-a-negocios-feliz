@@ -12,8 +12,8 @@ const Manifesto: React.FC = () => {
       <Navigation />
       
       <div className="flex-grow container mx-auto px-4 py-8 md:py-16 max-w-4xl">
-        <div className="content-box">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 uppercase tracking-widest font-mono">
+        <div className="brutalist-box">
+          <h1 className="brutalist-title mb-8">
             {t("manifesto.title")}
           </h1>
           
