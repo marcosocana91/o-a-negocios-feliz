@@ -33,10 +33,10 @@ const Index = () => {
       <div className="flex-grow flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
         <div className="mb-12 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 uppercase tracking-widest border-b-2 border-black pb-4">
-            Traductor
+            When design says...
           </h1>
           <p className="text-translator-text/70 text-xs uppercase tracking-wide mb-0 font-mono">
-            Diseño y negocio. Encontremos un lenguaje común
+            Design and business. Finding a common language
           </p>
         </div>
         

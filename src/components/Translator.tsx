@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getRandomTranslationPair, TranslationPair } from '../data/translationPairs';
 import TranslateButton from './TranslateButton';
 import ShareButton from './ShareButton';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, RefreshCw } from 'lucide-react';
 import ConfettiEffect from './ConfettiEffect';
 
 const Translator: React.FC = () => {
@@ -14,7 +14,8 @@ const Translator: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
   const [confettiTrigger, setConfettiTrigger] = useState(false);
-
+  const [direction, setDirection] = useState<'design-to-business' | 'business-to-design'>('design-to-business');
+  
   const generateTranslation = () => {
     setIsLoading(true);
     setShowAnimation(true);
@@ -28,28 +29,50 @@ const Translator: React.FC = () => {
     }, 600);
   };
 
+  const toggleDirection = () => {
+    setDirection(prev => 
+      prev === 'design-to-business' ? 'business-to-design' : 'design-to-business'
+    );
+  };
+
   // Generar una traducción inicial al cargar
   useEffect(() => {
     generateTranslation();
   }, []);
+
+  const sourceLabel = direction === 'design-to-business' ? "When design says:" : "When business says:";
+  const targetLabel = direction === 'design-to-business' ? "Business understands:" : "Design understands:";
+  
+  const sourceText = direction === 'design-to-business' ? translationPair.design : translationPair.business;
+  const targetText = direction === 'design-to-business' ? translationPair.business : translationPair.design;
 
   return (
     <div className="max-w-2xl w-full mx-auto border-2 border-black bg-white">
       <ConfettiEffect trigger={confettiTrigger} />
       
       <div className="p-6 sm:p-8 space-y-8">
+        <div className="flex justify-end">
+          <button 
+            onClick={toggleDirection}
+            className="flex items-center gap-2 font-mono text-xs uppercase hover:underline"
+          >
+            <RefreshCw className="h-4 w-4" />
+            Switch Direction
+          </button>
+        </div>
+        
         <div>
-          <label htmlFor="design-text" className="block text-sm font-mono mb-4 uppercase tracking-wider">
-            Cuando diseño dice:
+          <label htmlFor="source-text" className="block text-sm font-mono mb-4 uppercase tracking-wider">
+            {sourceLabel}
           </label>
           <div
-            id="design-text"
+            id="source-text"
             className="font-serif text-xl p-5 min-h-[120px] border-2 border-black w-full font-medium"
           >
             {isLoading ? (
               <div className="animate-pulse h-6 bg-gray-100 w-3/4 mx-auto mt-4"></div>
             ) : (
-              translationPair.design
+              sourceText
             )}
           </div>
         </div>
@@ -61,27 +84,27 @@ const Translator: React.FC = () => {
         </div>
         
         <div>
-          <label htmlFor="business-text" className="block text-sm font-mono mb-4 uppercase tracking-wider">
-            Negocio debería entender:
+          <label htmlFor="target-text" className="block text-sm font-mono mb-4 uppercase tracking-wider">
+            {targetLabel}
           </label>
           <div
-            id="business-text"
+            id="target-text"
             className="font-serif text-xl p-5 min-h-[120px] border-2 border-black w-full font-medium"
           >
             {isLoading ? (
               <div className="animate-pulse h-6 bg-gray-100 w-3/4 mx-auto mt-4"></div>
             ) : (
-              translationPair.business
+              targetText
             )}
           </div>
         </div>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-          <TranslateButton onClick={generateTranslation} text="Traducir ahora" />
-          {!isLoading && translationPair.design && (
+          <TranslateButton onClick={generateTranslation} text="Translate" />
+          {!isLoading && sourceText && (
             <ShareButton 
-              designText={translationPair.design}
-              businessText={translationPair.business}
+              designText={direction === 'design-to-business' ? sourceText : targetText}
+              businessText={direction === 'design-to-business' ? targetText : sourceText}
             />
           )}
         </div>
@@ -89,7 +112,7 @@ const Translator: React.FC = () => {
       
       <div className="border-t-2 border-black py-3 px-8">
         <p className="text-center text-xs font-mono text-translator-text/70">
-          Diseño y negocio. Dos mundos, un lenguaje.
+          Design and business. Two worlds, one language.
         </p>
       </div>
     </div>

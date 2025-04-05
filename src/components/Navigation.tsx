@@ -9,7 +9,7 @@ const Navigation: React.FC = () => {
     <nav className="border-b-2 border-black py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="font-bold font-mono uppercase text-md tracking-widest">
-          Traductor
+          When design says...
         </div>
         
         <div className="flex space-x-6">
@@ -30,12 +30,12 @@ const Navigation: React.FC = () => {
             Manifiesto
           </Link>
           <Link 
-            to="/quiz" 
+            to="/about" 
             className={`font-mono uppercase text-sm tracking-wider ${
-              location.pathname === '/quiz' ? 'underline' : ''
+              location.pathname === '/about' ? 'underline' : ''
             }`}
           >
-            Quiz
+            About
           </Link>
         </div>
       </div>
