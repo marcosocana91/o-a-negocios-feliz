@@ -34,7 +34,7 @@ const translations = {
     
     // About
     "about.title": "Sobre nosotros",
-    "about.p1": ""When design says..." es una herramienta para cerrar la brecha de comunicación entre diseñadores y stakeholders de negocio.",
+    "about.p1": "\"When design says...\" es una herramienta para cerrar la brecha de comunicación entre diseñadores y stakeholders de negocio.",
     "about.p2": "En el mundo del desarrollo de productos, los diseñadores y los profesionales de negocios a menudo hablan diferentes lenguajes. Lo que suena como una emocionante mejora de UX para un diseñador podría no resonar con stakeholders que se centran en métricas y resultados comerciales.",
     "about.p3": "Nuestro traductor ayuda a ambas partes a entenderse mejor convirtiendo la terminología de diseño al lenguaje de negocios y viceversa.",
     "about.p4": "Ya seas un diseñador tratando de argumentar tu trabajo o un profesional de negocios que quiere entender mejor las decisiones de diseño, nuestra herramienta está aquí para ayudarte a encontrar un terreno común y hablar un idioma que todos puedan entender.",
@@ -72,7 +72,7 @@ const translations = {
     
     // About
     "about.title": "About Us",
-    "about.p1": ""When design says..." is a tool to bridge the communication gap between designers and business stakeholders.",
+    "about.p1": "\"When design says...\" is a tool to bridge the communication gap between designers and business stakeholders.",
     "about.p2": "In the world of product development, designers and business professionals often speak different languages. What sounds like an exciting UX improvement to a designer might not resonate with stakeholders who focus on metrics and business outcomes.",
     "about.p3": "Our translator helps both sides understand each other better by converting design terminology to business language and vice versa.",
     "about.p4": "Whether you're a designer trying to make a case for your work or a business professional wanting to better understand design decisions, our tool is here to help you find common ground and speak a language everyone can understand.",
