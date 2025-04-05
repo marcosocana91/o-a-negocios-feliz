@@ -9,7 +9,7 @@ interface TranslateButtonProps {
 
 const TranslateButton: React.FC<TranslateButtonProps> = ({ 
   onClick, 
-  text = "Translate" 
+  text = "Traducir" 
 }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 

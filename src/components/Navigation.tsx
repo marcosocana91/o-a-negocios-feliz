@@ -1,9 +1,12 @@
 
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import LanguageSelector from './LanguageSelector';
+import { useLanguage } from '../context/LanguageContext';
 
 const Navigation: React.FC = () => {
   const location = useLocation();
+  const { t } = useLanguage();
   
   return (
     <nav className="border-b-2 border-black py-4">
@@ -12,14 +15,14 @@ const Navigation: React.FC = () => {
           When design says...
         </div>
         
-        <div className="flex space-x-6">
+        <div className="flex space-x-6 items-center">
           <Link 
             to="/" 
             className={`font-mono uppercase text-sm tracking-wider ${
               location.pathname === '/' ? 'underline' : ''
             }`}
           >
-            Home
+            {t("nav.home")}
           </Link>
           <Link 
             to="/manifesto" 
@@ -27,7 +30,7 @@ const Navigation: React.FC = () => {
               location.pathname === '/manifesto' ? 'underline' : ''
             }`}
           >
-            Manifiesto
+            {t("nav.manifesto")}
           </Link>
           <Link 
             to="/about" 
@@ -35,8 +38,9 @@ const Navigation: React.FC = () => {
               location.pathname === '/about' ? 'underline' : ''
             }`}
           >
-            About
+            {t("nav.about")}
           </Link>
+          <LanguageSelector />
         </div>
       </div>
     </nav>

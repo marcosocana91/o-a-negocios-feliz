@@ -5,8 +5,10 @@ import TranslateButton from './TranslateButton';
 import ShareButton from './ShareButton';
 import { ArrowDown, RefreshCw } from 'lucide-react';
 import ConfettiEffect from './ConfettiEffect';
+import { useLanguage } from '../context/LanguageContext';
 
 const Translator: React.FC = () => {
+  const { t, language } = useLanguage();
   const [translationPair, setTranslationPair] = useState<TranslationPair>({
     design: "",
     business: ""
@@ -23,7 +25,7 @@ const Translator: React.FC = () => {
     
     // Simulamos una pequeña demora para dar efecto de "traducción"
     setTimeout(() => {
-      const newPair = getRandomTranslationPair();
+      const newPair = getRandomTranslationPair(language);
       setTranslationPair(newPair);
       setIsLoading(false);
     }, 600);
@@ -38,10 +40,10 @@ const Translator: React.FC = () => {
   // Generar una traducción inicial al cargar
   useEffect(() => {
     generateTranslation();
-  }, []);
+  }, [language]);
 
-  const sourceLabel = direction === 'design-to-business' ? "When design says:" : "When business says:";
-  const targetLabel = direction === 'design-to-business' ? "Business understands:" : "Design understands:";
+  const sourceLabel = direction === 'design-to-business' ? t("translator.designSays") : t("translator.businessSays");
+  const targetLabel = direction === 'design-to-business' ? t("translator.businessUnderstands") : t("translator.designUnderstands");
   
   const sourceText = direction === 'design-to-business' ? translationPair.design : translationPair.business;
   const targetText = direction === 'design-to-business' ? translationPair.business : translationPair.design;
@@ -57,7 +59,7 @@ const Translator: React.FC = () => {
             className="flex items-center gap-2 font-mono text-xs uppercase hover:underline"
           >
             <RefreshCw className="h-4 w-4" />
-            Switch Direction
+            {t("nav.switchDirection")}
           </button>
         </div>
         
@@ -100,7 +102,7 @@ const Translator: React.FC = () => {
         </div>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-          <TranslateButton onClick={generateTranslation} text="Translate" />
+          <TranslateButton onClick={generateTranslation} text={t("translator.translate")} />
           {!isLoading && sourceText && (
             <ShareButton 
               designText={direction === 'design-to-business' ? sourceText : targetText}
@@ -112,7 +114,7 @@ const Translator: React.FC = () => {
       
       <div className="border-t-2 border-black py-3 px-8">
         <p className="text-center text-xs font-mono text-translator-text/70">
-          Design and business. Two worlds, one language.
+          {t("translator.footer")}
         </p>
       </div>
     </div>

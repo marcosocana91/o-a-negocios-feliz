@@ -1,38 +1,44 @@
 
 import React from 'react';
+import Navigation from '../components/Navigation';
 import FooterBanner from '../components/FooterBanner';
+import { useLanguage } from '../context/LanguageContext';
 
 const Manifesto: React.FC = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <Navigation />
+      
       <div className="flex-grow container mx-auto px-4 py-16 max-w-3xl">
         <h1 className="text-4xl md:text-5xl font-bold mb-12 uppercase tracking-widest border-b-2 border-black pb-4">
-          Manifiesto
+          {t("manifesto.title")}
         </h1>
         
         <div className="font-serif text-lg space-y-6">
           <p>
-            El diseño y el negocio a menudo hablan idiomas diferentes, creando barreras de comunicación que disminuyen el impacto del buen diseño en los resultados empresariales.
+            {t("manifesto.p1")}
           </p>
           
           <p>
-            Este traductor nace como una herramienta para tender puentes entre ambos mundos, facilitando un diálogo más fluido y productivo.
+            {t("manifesto.p2")}
           </p>
           
           <p>
-            Creemos que el diseño es una disciplina estratégica que debe alinearse con los objetivos de negocio para maximizar su valor.
+            {t("manifesto.p3")}
           </p>
           
           <p>
-            Nuestro objetivo es ayudar a los diseñadores a comunicar su trabajo de manera que sea valorado por stakeholders y decisores de negocio.
+            {t("manifesto.p4")}
           </p>
           
           <p>
-            Al mismo tiempo, queremos ayudar a los profesionales de negocio a entender el valor estratégico que puede aportar un buen diseño.
+            {t("manifesto.p5")}
           </p>
           
           <p className="border-t-2 border-black pt-6 mt-8 font-mono uppercase text-sm tracking-wider text-center">
-            Diseño y negocio. Dos mundos, un lenguaje.
+            {t("manifesto.footer")}
           </p>
         </div>
       </div>
