@@ -8,7 +8,7 @@ const About: React.FC = () => {
   const { t } = useLanguage();
   
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col brutalist-grid">
       <Navigation />
       
       <div className="flex-grow container mx-auto px-4 py-8 md:py-16 max-w-4xl">

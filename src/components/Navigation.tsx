@@ -4,17 +4,22 @@ import { Link, useLocation } from 'react-router-dom';
 import LanguageSelector from './LanguageSelector';
 import { useLanguage } from '../context/LanguageContext';
 import MobileMenu from './MobileMenu';
+import { useIsMobile } from '../hooks/use-mobile';
 
 const Navigation: React.FC = () => {
   const location = useLocation();
   const { t } = useLanguage();
+  const isMobile = useIsMobile();
   
   return (
     <nav className="border-b-2 border-black py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <div className="font-bold font-mono uppercase text-md tracking-widest">
-          When design says...
-        </div>
+        {!isMobile && (
+          <div className="font-bold font-mono uppercase text-md tracking-widest">
+            When design says...
+          </div>
+        )}
+        {isMobile && <div></div>}
         
         <div className="hidden md:flex space-x-6 items-center">
           <Link 
