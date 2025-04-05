@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import { translationPairs } from '../data/translationPairs';
 import { ArrowRight } from 'lucide-react';
 import FooterBanner from '../components/FooterBanner';
+import { useLanguage } from '../context/LanguageContext';
 
 const Quiz: React.FC = () => {
+  const { language } = useLanguage();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -12,14 +14,15 @@ const Quiz: React.FC = () => {
   const [quizStarted, setQuizStarted] = useState(false);
   const [quizFinished, setQuizFinished] = useState(false);
   
-  // Prepare quiz data from translation pairs
-  const quizQuestions = translationPairs.slice(0, 10).map(pair => ({
+  // Prepare quiz data from translation pairs based on current language
+  const translationPairsArray = translationPairs[language];
+  const quizQuestions = translationPairsArray.slice(0, 10).map(pair => ({
     question: pair.design,
     correctAnswer: pair.business,
     options: [
       pair.business,
-      translationPairs[(Math.floor(Math.random() * translationPairs.length))].business,
-      translationPairs[(Math.floor(Math.random() * translationPairs.length))].business,
+      translationPairsArray[Math.floor(Math.random() * translationPairsArray.length)].business,
+      translationPairsArray[Math.floor(Math.random() * translationPairsArray.length)].business,
     ].sort(() => Math.random() - 0.5)
   }));
   
