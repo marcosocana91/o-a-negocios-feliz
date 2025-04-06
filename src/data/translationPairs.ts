@@ -9,6 +9,13 @@ interface TranslationData {
   en: TranslationPair[];
 }
 
+// Function to get a random translation pair based on the current language
+export const getRandomTranslationPair = (language: 'es' | 'en'): TranslationPair => {
+  const pairs = translationPairs[language];
+  const randomIndex = Math.floor(Math.random() * pairs.length);
+  return pairs[randomIndex];
+};
+
 export const translationPairs: TranslationData = {
   es: [
     {

@@ -25,7 +25,7 @@ const Translator: React.FC = () => {
     
     // Simulamos una pequeña demora para dar efecto de "traducción"
     setTimeout(() => {
-      const newPair = getRandomTranslationPair(language);
+      const newPair = getRandomTranslationPair(language as 'es' | 'en');
       setTranslationPair(newPair);
       setIsLoading(false);
     }, 600);
