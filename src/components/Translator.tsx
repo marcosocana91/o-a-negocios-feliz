@@ -63,7 +63,6 @@ const Translator: React.FC = () => {
   }
 
   const sourceLabel = direction === 'design-to-audience' ? t("translator.designSays") : getCategoryLabel();
-  const targetLabel = direction === 'design-to-audience' ? getCategoryLabel() : t("translator.designSays");
   
   const getSourceText = () => {
     if (direction === 'design-to-audience') {
@@ -118,40 +117,48 @@ const Translator: React.FC = () => {
         </div>
         
         <div className="flex justify-center py-3">
-          <button 
-            onClick={toggleDirection}
-            className="flex flex-col items-center p-1 hover:bg-gray-100 rounded-md transition-colors"
-            aria-label="Toggle direction"
-          >
-            <ArrowUp className="h-5 w-5 text-black mb-1" />
-            <ArrowDown className="h-5 w-5 text-black" />
-          </button>
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={toggleDirection}
+              className="p-1 hover:bg-gray-100 rounded-md transition-colors"
+              aria-label="Toggle direction up"
+            >
+              <ArrowUp className="h-5 w-5 text-black" />
+            </button>
+            <button 
+              onClick={toggleDirection}
+              className="p-1 hover:bg-gray-100 rounded-md transition-colors"
+              aria-label="Toggle direction down"
+            >
+              <ArrowDown className="h-5 w-5 text-black" />
+            </button>
+          </div>
         </div>
         
         <div>
-          <div className="flex items-center justify-between mb-4">
-            <label htmlFor="target-text" className="block text-sm font-mono uppercase tracking-wider">
-              {targetLabel}
+          {direction === 'design-to-audience' ? (
+            <div className="flex items-center mb-4">
+              <Select 
+                value={category} 
+                onValueChange={(value) => setCategory(value as TranslationCategory)}
+              >
+                <SelectTrigger className="font-mono text-xs border-none shadow-none p-0 h-auto">
+                  <span className="text-sm font-mono uppercase tracking-wider">{getCategoryLabel()}</span>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="business">{t("translator.businessUnderstands")}</SelectItem>
+                  <SelectItem value="marketing">{t("translator.marketingUnderstands")}</SelectItem>
+                  <SelectItem value="development">{t("translator.developmentUnderstands")}</SelectItem>
+                  <SelectItem value="family">{t("translator.familyUnderstands")}</SelectItem>
+                </SelectContent>
+              </Select>
+              <span className="text-sm font-mono uppercase tracking-wider ml-1">:</span>
+            </div>
+          ) : (
+            <label htmlFor="target-text" className="block text-sm font-mono mb-4 uppercase tracking-wider">
+              {t("translator.designSays")}:
             </label>
-            {direction === 'design-to-audience' && (
-              <div className="w-48">
-                <Select 
-                  value={category} 
-                  onValueChange={(value) => setCategory(value as TranslationCategory)}
-                >
-                  <SelectTrigger className="font-mono text-xs">
-                    <SelectValue placeholder={t("translator.selectAudience")} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="business">{t("translator.business")}</SelectItem>
-                    <SelectItem value="marketing">{t("translator.marketing")}</SelectItem>
-                    <SelectItem value="development">{t("translator.development")}</SelectItem>
-                    <SelectItem value="family">{t("translator.family")}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            )}
-          </div>
+          )}
           
           <div
             id="target-text"

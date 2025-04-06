@@ -15,9 +15,7 @@ const Navigation: React.FC = () => {
   return (
     <nav className="border-b-2 border-black py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link to="/" className="font-bold font-mono uppercase text-md tracking-widest">
-          <Logo />
-        </Link>
+        <Logo />
         
         <div className="hidden md:flex space-x-6 items-center">
           <Link 
