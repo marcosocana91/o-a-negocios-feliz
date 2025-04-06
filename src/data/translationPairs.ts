@@ -555,6 +555,10 @@ export const translationPairs: TranslationData = {
     {
       design: "El diseño no refleja la personalidad de marca",
       business: "La experiencia no transmite adecuadamente nuestros valores"
+    },
+    {
+      design: "Este proceso carece de guías visuales",
+      business: "Los usuarios necesitan más ayuda para completar acciones de valor"
     }
   ],
   en: [
@@ -930,8 +934,4 @@ export const translationPairs: TranslationData = {
     },
     {
       design: "We need a more goal-oriented design",
-      business: "We're not aligning the experience with business metrics"
-    },
-    {
-      design: "This process lacks visual guides",
-      business: "Users need more help to complete valuable actions
+      business: "We're not aligning the experience
