@@ -14,7 +14,7 @@ const ConfettiEffect: React.FC<ConfettiEffectProps> = ({ trigger }) => {
       setShowConfetti(true);
       const timer = setTimeout(() => {
         setShowConfetti(false);
-      }, 2000);
+      }, 5000); // Extended to 5 seconds
       
       return () => clearTimeout(timer);
     }
@@ -27,8 +27,8 @@ const ConfettiEffect: React.FC<ConfettiEffectProps> = ({ trigger }) => {
           width={window.innerWidth}
           height={window.innerHeight}
           recycle={false}
-          numberOfPieces={200}
-          gravity={0.2}
+          numberOfPieces={300} // Increased number of pieces
+          gravity={0.15} // Reduced gravity to make confetti fall slower
         />
       )}
     </>

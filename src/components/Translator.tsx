@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getTranslationByCategory, TranslationPair, TranslationCategory } from '../data/translationPairs';
 import TranslateButton from './TranslateButton';
 import ShareButton from './ShareButton';
-import { ArrowDown, ArrowUp } from 'lucide-react';
+import { ArrowUpDown } from 'lucide-react';
 import ConfettiEffect from './ConfettiEffect';
 import { useLanguage } from '../context/LanguageContext';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -50,15 +50,15 @@ const Translator: React.FC = () => {
   const getCategoryLabel = (): string => {
     switch(category) {
       case 'business':
-        return t("translator.businessUnderstands");
+        return t("translator.businessUnderstandsEllipsis");
       case 'marketing':
-        return t("translator.marketingUnderstands");
+        return t("translator.marketingUnderstandsEllipsis");
       case 'development':
-        return t("translator.developmentUnderstands");
+        return t("translator.developmentUnderstandsEllipsis");
       case 'family':
-        return t("translator.familyUnderstands");
+        return t("translator.familyUnderstandsEllipsis");
       default:
-        return t("translator.businessUnderstands");
+        return t("translator.businessUnderstandsEllipsis");
     }
   }
 
@@ -117,22 +117,13 @@ const Translator: React.FC = () => {
         </div>
         
         <div className="flex justify-center py-3">
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={toggleDirection}
-              className="p-1 hover:bg-gray-100 rounded-md transition-colors"
-              aria-label="Toggle direction up"
-            >
-              <ArrowUp className="h-5 w-5 text-black" />
-            </button>
-            <button 
-              onClick={toggleDirection}
-              className="p-1 hover:bg-gray-100 rounded-md transition-colors"
-              aria-label="Toggle direction down"
-            >
-              <ArrowDown className="h-5 w-5 text-black" />
-            </button>
-          </div>
+          <button 
+            onClick={toggleDirection}
+            className="p-2 hover:bg-gray-100 rounded-md transition-colors flex items-center"
+            aria-label="Toggle direction"
+          >
+            <ArrowUpDown className="h-5 w-5 text-black" />
+          </button>
         </div>
         
         <div>
@@ -142,17 +133,16 @@ const Translator: React.FC = () => {
                 value={category} 
                 onValueChange={(value) => setCategory(value as TranslationCategory)}
               >
-                <SelectTrigger className="font-mono text-xs border-none shadow-none p-0 h-auto">
+                <SelectTrigger className="font-mono text-xs border-2 border-black shadow-none p-0 h-auto w-1/2">
                   <span className="text-sm font-mono uppercase tracking-wider">{getCategoryLabel()}</span>
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="business">{t("translator.businessUnderstands")}</SelectItem>
-                  <SelectItem value="marketing">{t("translator.marketingUnderstands")}</SelectItem>
-                  <SelectItem value="development">{t("translator.developmentUnderstands")}</SelectItem>
-                  <SelectItem value="family">{t("translator.familyUnderstands")}</SelectItem>
+                <SelectContent className="border-2 border-black">
+                  <SelectItem value="business">{t("translator.businessUnderstandsEllipsis")}</SelectItem>
+                  <SelectItem value="marketing">{t("translator.marketingUnderstandsEllipsis")}</SelectItem>
+                  <SelectItem value="development">{t("translator.developmentUnderstandsEllipsis")}</SelectItem>
+                  <SelectItem value="family">{t("translator.familyUnderstandsEllipsis")}</SelectItem>
                 </SelectContent>
               </Select>
-              <span className="text-sm font-mono uppercase tracking-wider ml-1">:</span>
             </div>
           ) : (
             <label htmlFor="target-text" className="block text-sm font-mono mb-4 uppercase tracking-wider">
