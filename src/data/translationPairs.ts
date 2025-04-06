@@ -1,3 +1,4 @@
+
 export interface TranslationPair {
   design: string;
   business: string;
@@ -934,4 +935,11 @@ export const translationPairs: TranslationData = {
     },
     {
       design: "We need a more goal-oriented design",
-      business: "We're not aligning the experience
+      business: "We're not aligning the experience with business metrics"
+    },
+    {
+      design: "This process lacks visual guides",
+      business: "Users need more help to complete valuable actions"
+    }
+  ]
+};
