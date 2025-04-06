@@ -50,15 +50,15 @@ const Translator: React.FC = () => {
   const getCategoryLabel = (): string => {
     switch(category) {
       case 'business':
-        return t("translator.businessUnderstandsEllipsis");
+        return "Negocio debería entender...";
       case 'marketing':
-        return t("translator.marketingUnderstandsEllipsis");
+        return "Marketing debería entender...";
       case 'development':
-        return t("translator.developmentUnderstandsEllipsis");
+        return "Desarrollo debería entender...";
       case 'family':
-        return t("translator.familyUnderstandsEllipsis");
+        return "Tu familia debería entender...";
       default:
-        return t("translator.businessUnderstandsEllipsis");
+        return "Negocio debería entender...";
     }
   }
 
@@ -101,7 +101,7 @@ const Translator: React.FC = () => {
       
       <div className="p-6 sm:p-8 space-y-8">
         <div>
-          <label htmlFor="source-text" className="block text-sm font-mono mb-4 uppercase tracking-wider">
+          <label htmlFor="source-text" className="block text-sm font-mono mb-4 uppercase tracking-wider font-bold">
             {sourceLabel}
           </label>
           <div
@@ -133,19 +133,19 @@ const Translator: React.FC = () => {
                 value={category} 
                 onValueChange={(value) => setCategory(value as TranslationCategory)}
               >
-                <SelectTrigger className="font-mono text-xs border-2 border-black shadow-none p-0 h-auto w-1/2">
-                  <span className="text-sm font-mono uppercase tracking-wider">{getCategoryLabel()}</span>
+                <SelectTrigger className="font-mono text-xs border-2 border-black shadow-none p-0 h-auto w-1/2 font-bold">
+                  <span className="text-sm font-mono uppercase tracking-wider px-3 py-1">{getCategoryLabel()}</span>
                 </SelectTrigger>
                 <SelectContent className="border-2 border-black">
-                  <SelectItem value="business">{t("translator.businessUnderstandsEllipsis")}</SelectItem>
-                  <SelectItem value="marketing">{t("translator.marketingUnderstandsEllipsis")}</SelectItem>
-                  <SelectItem value="development">{t("translator.developmentUnderstandsEllipsis")}</SelectItem>
-                  <SelectItem value="family">{t("translator.familyUnderstandsEllipsis")}</SelectItem>
+                  <SelectItem value="business" className="px-3">Negocio debería entender...</SelectItem>
+                  <SelectItem value="marketing" className="px-3">Marketing debería entender...</SelectItem>
+                  <SelectItem value="development" className="px-3">Desarrollo debería entender...</SelectItem>
+                  <SelectItem value="family" className="px-3">Tu familia debería entender...</SelectItem>
                 </SelectContent>
               </Select>
             </div>
           ) : (
-            <label htmlFor="target-text" className="block text-sm font-mono mb-4 uppercase tracking-wider">
+            <label htmlFor="target-text" className="block text-sm font-mono mb-4 uppercase tracking-wider font-bold">
               {t("translator.designSays")}:
             </label>
           )}
