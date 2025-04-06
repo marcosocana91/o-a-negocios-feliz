@@ -133,8 +133,8 @@ const Translator: React.FC = () => {
                 value={category} 
                 onValueChange={(value) => setCategory(value as TranslationCategory)}
               >
-                <SelectTrigger className="font-mono text-xs border-2 border-black shadow-none p-0 h-auto w-1/2 font-bold">
-                  <span className="text-sm font-mono uppercase tracking-wider px-3 py-1">{getCategoryLabel()}</span>
+                <SelectTrigger className="font-mono text-xs border-2 border-black shadow-none p-0 h-auto w-auto font-bold">
+                  <span className="text-sm font-mono uppercase tracking-wider px-3 py-1 text-left">{getCategoryLabel()}</span>
                 </SelectTrigger>
                 <SelectContent className="border-2 border-black">
                   <SelectItem value="business" className="px-3">Negocio debería entender...</SelectItem>
