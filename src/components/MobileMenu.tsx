@@ -58,15 +58,6 @@ const MobileMenu: React.FC = () => {
 
         <div className="flex flex-col px-4 py-6 space-y-8">
           <Link 
-            to="/" 
-            className={`font-mono uppercase text-lg tracking-wider ${
-              location.pathname === '/' ? 'underline' : ''
-            }`}
-            onClick={closeMenu}
-          >
-            {t("nav.home")}
-          </Link>
-          <Link 
             to="/manifesto" 
             className={`font-mono uppercase text-lg tracking-wider ${
               location.pathname === '/manifesto' ? 'underline' : ''

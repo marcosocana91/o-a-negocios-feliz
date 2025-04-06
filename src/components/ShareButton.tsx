@@ -1,57 +1,69 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Share2 } from 'lucide-react';
-import { toast } from 'sonner';
+import { useLanguage } from '../context/LanguageContext';
+import { TranslationCategory } from '../data/translationPairs';
 
 interface ShareButtonProps {
   designText: string;
   businessText: string;
+  marketingText: string;
+  developmentText: string;
+  familyText: string;
+  currentCategory: TranslationCategory;
 }
 
-const ShareButton: React.FC<ShareButtonProps> = ({ designText, businessText }) => {
-  const handleShare = async () => {
-    const shareText = `Cuando diseño dice: "${designText}"\n\nNegocio debería entender: "${businessText}"\n\nTraducido con Traductor Diseño-Negocio`;
-    
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: 'Traductor Diseño-Negocio',
-          text: shareText,
-          url: window.location.href,
-        });
-        toast.success('¡Compartido con éxito!');
-      } catch (error) {
-        console.error('Error al compartir:', error);
-        copyToClipboard();
-      }
-    } else {
-      copyToClipboard();
-    }
-  };
+const ShareButton: React.FC<ShareButtonProps> = ({ 
+  designText, 
+  businessText,
+  marketingText,
+  developmentText,
+  familyText,
+  currentCategory
+}) => {
+  const [isSharing, setIsSharing] = useState(false);
+  const { t } = useLanguage();
 
-  const copyToClipboard = () => {
-    const shareText = `Cuando diseño dice: "${designText}"\n\nNegocio debería entender: "${businessText}"\n\nTraducido con Traductor Diseño-Negocio`;
+  const getCategoryText = (): string => {
+    switch(currentCategory) {
+      case 'business': return businessText;
+      case 'marketing': return marketingText;
+      case 'development': return developmentText;
+      case 'family': return familyText;
+      default: return businessText;
+    }
+  }
+
+  const handleShare = async () => {
+    setIsSharing(true);
     
-    navigator.clipboard.writeText(shareText)
-      .then(() => {
-        toast.success('Copiado', {
-          description: 'Texto copiado al portapapeles'
+    // Create text to share
+    const shareText = `💬 ${t("share.designSays")}:\n"${designText}"\n\n🔄 ${t(`share.${currentCategory}Understands`)}:\n"${getCategoryText()}"\n\nwhendesignsays.com`;
+    
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          text: shareText
         });
-      })
-      .catch((err) => {
-        console.error('Error al copiar:', err);
-        toast.error('No se pudo copiar al portapapeles');
-      });
+      } else {
+        await navigator.clipboard.writeText(shareText);
+        alert(t("share.copied"));
+      }
+    } catch (error) {
+      console.error('Error sharing:', error);
+    } finally {
+      setIsSharing(false);
+    }
   };
 
   return (
     <button 
+      className={`flex items-center justify-center gap-2 py-2 px-8 bg-white text-black font-mono text-sm uppercase border-2 border-black hover:bg-black hover:text-white transition-colors ${isSharing ? 'opacity-50' : ''}`}
       onClick={handleShare}
-      className="flex items-center justify-center gap-2 py-2 px-8 border-2 border-black font-mono text-sm uppercase transition-colors hover:bg-black hover:text-white"
-      aria-label="Compartir traducción"
+      disabled={isSharing}
     >
+      <span>{t("share.button")}</span>
       <Share2 className="h-4 w-4" />
-      <span>Compartir</span>
     </button>
   );
 };

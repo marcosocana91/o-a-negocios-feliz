@@ -5,6 +5,7 @@ import LanguageSelector from './LanguageSelector';
 import { useLanguage } from '../context/LanguageContext';
 import MobileMenu from './MobileMenu';
 import { useIsMobile } from '../hooks/use-mobile';
+import Logo from './Logo';
 
 const Navigation: React.FC = () => {
   const location = useLocation();
@@ -14,22 +15,11 @@ const Navigation: React.FC = () => {
   return (
     <nav className="border-b-2 border-black py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        {!isMobile && (
-          <div className="font-bold font-mono uppercase text-md tracking-widest">
-            When design says...
-          </div>
-        )}
-        {isMobile && <div></div>}
+        <Link to="/" className="font-bold font-mono uppercase text-md tracking-widest">
+          <Logo />
+        </Link>
         
         <div className="hidden md:flex space-x-6 items-center">
-          <Link 
-            to="/" 
-            className={`font-mono uppercase text-sm tracking-wider ${
-              location.pathname === '/' ? 'underline' : ''
-            }`}
-          >
-            {t("nav.home")}
-          </Link>
           <Link 
             to="/manifesto" 
             className={`font-mono uppercase text-sm tracking-wider ${

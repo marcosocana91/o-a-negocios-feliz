@@ -1,22 +1,27 @@
 
 import React, { useState, useEffect } from 'react';
-import { getRandomTranslationPair, TranslationPair } from '../data/translationPairs';
+import { getTranslationByCategory, TranslationPair, TranslationCategory } from '../data/translationPairs';
 import TranslateButton from './TranslateButton';
 import ShareButton from './ShareButton';
-import { ArrowDown, RefreshCw } from 'lucide-react';
+import { ArrowDown, ArrowUp } from 'lucide-react';
 import ConfettiEffect from './ConfettiEffect';
 import { useLanguage } from '../context/LanguageContext';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const Translator: React.FC = () => {
   const { t, language } = useLanguage();
   const [translationPair, setTranslationPair] = useState<TranslationPair>({
     design: "",
-    business: ""
+    business: "",
+    marketing: "",
+    development: "",
+    family: ""
   });
   const [isLoading, setIsLoading] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
   const [confettiTrigger, setConfettiTrigger] = useState(false);
-  const [direction, setDirection] = useState<'design-to-business' | 'business-to-design'>('design-to-business');
+  const [direction, setDirection] = useState<'design-to-audience' | 'audience-to-design'>('design-to-audience');
+  const [category, setCategory] = useState<TranslationCategory>('business');
   
   const generateTranslation = () => {
     setIsLoading(true);
@@ -25,7 +30,7 @@ const Translator: React.FC = () => {
     
     // Simulamos una pequeña demora para dar efecto de "traducción"
     setTimeout(() => {
-      const newPair = getRandomTranslationPair(language as 'es' | 'en');
+      const newPair = getTranslationByCategory(language as 'es' | 'en', category);
       setTranslationPair(newPair);
       setIsLoading(false);
     }, 600);
@@ -33,36 +38,69 @@ const Translator: React.FC = () => {
 
   const toggleDirection = () => {
     setDirection(prev => 
-      prev === 'design-to-business' ? 'business-to-design' : 'design-to-business'
+      prev === 'design-to-audience' ? 'audience-to-design' : 'design-to-audience'
     );
   };
 
   // Generar una traducción inicial al cargar
   useEffect(() => {
     generateTranslation();
-  }, [language]);
+  }, [language, category]);
 
-  const sourceLabel = direction === 'design-to-business' ? t("translator.designSays") : t("translator.businessSays");
-  const targetLabel = direction === 'design-to-business' ? t("translator.businessUnderstands") : t("translator.designUnderstands");
+  const getCategoryLabel = (): string => {
+    switch(category) {
+      case 'business':
+        return t("translator.businessUnderstands");
+      case 'marketing':
+        return t("translator.marketingUnderstands");
+      case 'development':
+        return t("translator.developmentUnderstands");
+      case 'family':
+        return t("translator.familyUnderstands");
+      default:
+        return t("translator.businessUnderstands");
+    }
+  }
+
+  const sourceLabel = direction === 'design-to-audience' ? t("translator.designSays") : getCategoryLabel();
+  const targetLabel = direction === 'design-to-audience' ? getCategoryLabel() : t("translator.designSays");
   
-  const sourceText = direction === 'design-to-business' ? translationPair.design : translationPair.business;
-  const targetText = direction === 'design-to-business' ? translationPair.business : translationPair.design;
+  const getSourceText = () => {
+    if (direction === 'design-to-audience') {
+      return translationPair.design;
+    } else {
+      switch(category) {
+        case 'business': return translationPair.business;
+        case 'marketing': return translationPair.marketing;
+        case 'development': return translationPair.development;
+        case 'family': return translationPair.family;
+        default: return translationPair.business;
+      }
+    }
+  };
+
+  const getTargetText = () => {
+    if (direction === 'design-to-audience') {
+      switch(category) {
+        case 'business': return translationPair.business;
+        case 'marketing': return translationPair.marketing;
+        case 'development': return translationPair.development;
+        case 'family': return translationPair.family;
+        default: return translationPair.business;
+      }
+    } else {
+      return translationPair.design;
+    }
+  };
+
+  const sourceText = getSourceText();
+  const targetText = getTargetText();
 
   return (
     <div className="max-w-2xl w-full mx-auto border-2 border-black bg-white">
       <ConfettiEffect trigger={confettiTrigger} />
       
       <div className="p-6 sm:p-8 space-y-8">
-        <div className="flex justify-end">
-          <button 
-            onClick={toggleDirection}
-            className="flex items-center gap-2 font-mono text-xs uppercase hover:underline"
-          >
-            <RefreshCw className="h-4 w-4" />
-            {t("nav.switchDirection")}
-          </button>
-        </div>
-        
         <div>
           <label htmlFor="source-text" className="block text-sm font-mono mb-4 uppercase tracking-wider">
             {sourceLabel}
@@ -80,15 +118,41 @@ const Translator: React.FC = () => {
         </div>
         
         <div className="flex justify-center py-3">
-          <div className={`${showAnimation ? 'animate-bounce-light' : ''}`}>
+          <button 
+            onClick={toggleDirection}
+            className="flex flex-col items-center p-1 hover:bg-gray-100 rounded-md transition-colors"
+            aria-label="Toggle direction"
+          >
+            <ArrowUp className="h-5 w-5 text-black mb-1" />
             <ArrowDown className="h-5 w-5 text-black" />
-          </div>
+          </button>
         </div>
         
         <div>
-          <label htmlFor="target-text" className="block text-sm font-mono mb-4 uppercase tracking-wider">
-            {targetLabel}
-          </label>
+          <div className="flex items-center justify-between mb-4">
+            <label htmlFor="target-text" className="block text-sm font-mono uppercase tracking-wider">
+              {targetLabel}
+            </label>
+            {direction === 'design-to-audience' && (
+              <div className="w-48">
+                <Select 
+                  value={category} 
+                  onValueChange={(value) => setCategory(value as TranslationCategory)}
+                >
+                  <SelectTrigger className="font-mono text-xs">
+                    <SelectValue placeholder={t("translator.selectAudience")} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="business">{t("translator.business")}</SelectItem>
+                    <SelectItem value="marketing">{t("translator.marketing")}</SelectItem>
+                    <SelectItem value="development">{t("translator.development")}</SelectItem>
+                    <SelectItem value="family">{t("translator.family")}</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
+          </div>
+          
           <div
             id="target-text"
             className="font-serif text-xl p-5 min-h-[120px] border-2 border-black w-full font-medium"
@@ -105,8 +169,12 @@ const Translator: React.FC = () => {
           <TranslateButton onClick={generateTranslation} text={t("translator.translate")} />
           {!isLoading && sourceText && (
             <ShareButton 
-              designText={direction === 'design-to-business' ? sourceText : targetText}
-              businessText={direction === 'design-to-business' ? targetText : sourceText}
+              designText={translationPair.design}
+              businessText={translationPair.business}
+              marketingText={translationPair.marketing}
+              developmentText={translationPair.development}
+              familyText={translationPair.family}
+              currentCategory={category}
             />
           )}
         </div>
