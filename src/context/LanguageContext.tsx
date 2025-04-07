@@ -14,7 +14,7 @@ const translations = {
     // Navigation
     "nav.home": "Inicio",
     "nav.manifesto": "Manifiesto",
-    "nav.about": "Sobre nosotros",
+    "nav.about": "Nosotros",
     "nav.switchDirection": "Cambiar dirección",
     
     // Translator
@@ -50,7 +50,7 @@ const translations = {
     "footer.createdBy": "Creado por",
     
     // About
-    "about.title": "Sobre nosotros",
+    "about.title": "Nosotros",
     "about.p1": "\"When design says...\" es una herramienta para cerrar la brecha de comunicación entre diseñadores y stakeholders de negocio.",
     "about.p2": "En el mundo del desarrollo de productos, los diseñadores y los profesionales de negocios a menudo hablan diferentes lenguajes. Lo que suena como una emocionante mejora de UX para un diseñador podría no resonar con stakeholders que se centran en métricas y resultados comerciales.",
     "about.p3": "Nuestro traductor ayuda a ambas partes a entenderse mejor convirtiendo la terminología de diseño al lenguaje de negocios y viceversa.",
@@ -69,7 +69,7 @@ const translations = {
     // Navigation
     "nav.home": "Home",
     "nav.manifesto": "Manifesto",
-    "nav.about": "About us",
+    "nav.about": "About",
     "nav.switchDirection": "Switch direction",
     
     // Translator
@@ -105,7 +105,7 @@ const translations = {
     "footer.createdBy": "Created by",
     
     // About
-    "about.title": "About Us",
+    "about.title": "About",
     "about.p1": "\"When design says...\" is a tool to bridge the communication gap between designers and business stakeholders.",
     "about.p2": "In the world of product development, designers and business professionals often speak different languages. What sounds like an exciting UX improvement to a designer might not resonate with stakeholders who focus on metrics and business outcomes.",
     "about.p3": "Our translator helps both sides understand each other better by converting design terminology to business language and vice versa.",

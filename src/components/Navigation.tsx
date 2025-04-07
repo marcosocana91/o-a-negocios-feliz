@@ -20,7 +20,7 @@ const Navigation: React.FC = () => {
         <div className="hidden md:flex space-x-6 items-center">
           <Link 
             to="/manifesto" 
-            className={`font-mono uppercase text-sm tracking-wider ${
+            className={`font-mono uppercase text-sm tracking-wider font-bold ${
               location.pathname === '/manifesto' ? 'underline' : ''
             }`}
           >
@@ -28,7 +28,7 @@ const Navigation: React.FC = () => {
           </Link>
           <Link 
             to="/about" 
-            className={`font-mono uppercase text-sm tracking-wider ${
+            className={`font-mono uppercase text-sm tracking-wider font-bold ${
               location.pathname === '/about' ? 'underline' : ''
             }`}
           >

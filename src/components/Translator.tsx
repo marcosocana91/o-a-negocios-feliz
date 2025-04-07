@@ -36,7 +36,7 @@ const Translator: React.FC = () => {
   }, [language]);
 
   return (
-    <div className="max-w-4xl w-full mx-auto border-2 border-black bg-white">
+    <div className="max-w-4xl w-full mx-auto border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
       <ConfettiEffect trigger={confettiTrigger} />
       
       <div className="p-6 sm:p-8 space-y-8">
@@ -47,7 +47,7 @@ const Translator: React.FC = () => {
           </label>
           <div
             id="design-text"
-            className="font-serif text-xl p-5 min-h-[100px] border-2 border-black w-full font-medium bg-white"
+            className="font-serif text-xl p-5 min-h-[100px] border-2 border-black w-full font-medium bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
           >
             {isLoading ? (
               <div className="animate-pulse h-6 bg-gray-100 w-3/4 mx-auto mt-4"></div>
@@ -66,7 +66,7 @@ const Translator: React.FC = () => {
             </label>
             <div
               id="business-text"
-              className="font-serif text-base p-4 min-h-[100px] border-2 border-black w-full font-medium bg-[#FEF7CD]"
+              className="font-serif text-base p-4 min-h-[100px] border-2 border-black w-full font-medium bg-[#FFFAE0] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
             >
               {isLoading ? (
                 <div className="animate-pulse h-5 bg-gray-100 w-3/4 mx-auto mt-4"></div>
@@ -83,7 +83,7 @@ const Translator: React.FC = () => {
             </label>
             <div
               id="marketing-text"
-              className="font-serif text-base p-4 min-h-[100px] border-2 border-black w-full font-medium bg-[#D3E4FD]"
+              className="font-serif text-base p-4 min-h-[100px] border-2 border-black w-full font-medium bg-[#E9F4FF] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
             >
               {isLoading ? (
                 <div className="animate-pulse h-5 bg-gray-100 w-3/4 mx-auto mt-4"></div>
@@ -100,7 +100,7 @@ const Translator: React.FC = () => {
             </label>
             <div
               id="development-text"
-              className="font-serif text-base p-4 min-h-[100px] border-2 border-black w-full font-medium bg-[#E5DEFF]"
+              className="font-serif text-base p-4 min-h-[100px] border-2 border-black w-full font-medium bg-[#F0EBFF] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
             >
               {isLoading ? (
                 <div className="animate-pulse h-5 bg-gray-100 w-3/4 mx-auto mt-4"></div>
@@ -117,7 +117,7 @@ const Translator: React.FC = () => {
             </label>
             <div
               id="family-text"
-              className="font-serif text-base p-4 min-h-[100px] border-2 border-black w-full font-medium bg-[#FFDEE2]"
+              className="font-serif text-base p-4 min-h-[100px] border-2 border-black w-full font-medium bg-[#FFF0F2] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
             >
               {isLoading ? (
                 <div className="animate-pulse h-5 bg-gray-100 w-3/4 mx-auto mt-4"></div>

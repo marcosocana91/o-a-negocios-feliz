@@ -12,7 +12,7 @@ const About: React.FC = () => {
       <Navigation />
       
       <div className="flex-grow container mx-auto px-4 py-8 md:py-16 max-w-4xl">
-        <div className="brutalist-box">
+        <div className="brutalist-box shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
           <h1 className="brutalist-title mb-8">
             {t("about.title")}
           </h1>
