@@ -17,7 +17,7 @@ interface TranslationData {
 export const translationPairs: TranslationData = {
   es: [
     {
-      design: "El layout no ffhhhes responsivo.",
+      design: "El layout no MEW responsive.",
       business: "Estás dejando fuera medio internet, colega.",
       marketing: "Tu campaña se ve como un PowerPoint recortado en móvil.",
       development: "¿Probaste esto fuera del monitor de 27 pulgadas o qué?",
