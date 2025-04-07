@@ -1,21 +1,19 @@
-
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useIsMobile } from '../hooks/use-mobile';
-
 interface PromotionalModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
-
 const PromotionalModal: React.FC<PromotionalModalProps> = ({
   open,
   onOpenChange
 }) => {
-  const { language } = useLanguage();
+  const {
+    language
+  } = useLanguage();
   const isMobile = useIsMobile();
-  
   const content = {
     es: {
       title: "¡Consigue el Workbook para Diseñadores!",
@@ -30,18 +28,12 @@ const PromotionalModal: React.FC<PromotionalModalProps> = ({
       closeButton: "Close"
     }
   };
-
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+  return <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="p-0 border-none max-w-2xl">
         <div className="bg-[#F8DE29] text-black border-2 border-black">
-          <div className="px-4 md:px-8 py-6 md:py-8 flex flex-col items-center">
+          <div className="px-4 py-6 flex flex-col items-center md:px-[24px] md:py-[24px]">
             <div className="w-full max-w-md mx-auto border-2 border-black">
-              <img 
-                alt="Workbook para Diseñadores" 
-                className="w-full object-contain" 
-                src="/lovable-uploads/eef126d8-351c-41ce-82bd-fa00bdac8c46.jpg" 
-              />
+              <img alt="Workbook para Diseñadores" className="w-full object-contain" src="/lovable-uploads/eef126d8-351c-41ce-82bd-fa00bdac8c46.jpg" />
             </div>
             
             <div className="text-center mt-5 md:mt-6 space-y-3 md:space-y-4">
@@ -54,18 +46,10 @@ const PromotionalModal: React.FC<PromotionalModalProps> = ({
               </p>
               
               <div className="mt-4 md:mt-6 flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
-                <a 
-                  href="https://www.amazon.es/Workbook-para-Dise%C3%B1adores-producto-gr%C3%A1ficos/dp/B0DLTT5WNM" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="bg-black text-white font-mono py-2 md:py-3 px-6 md:px-8 inline-block hover:bg-opacity-80 transition-colors font-bold"
-                >
+                <a href="https://www.amazon.es/Workbook-para-Dise%C3%B1adores-producto-gr%C3%A1ficos/dp/B0DLTT5WNM" target="_blank" rel="noopener noreferrer" className="bg-black text-white font-mono py-2 md:py-3 px-6 md:px-8 inline-block hover:bg-opacity-80 transition-colors font-bold">
                   {content[language].buttonText}
                 </a>
-                <button 
-                  onClick={() => onOpenChange(false)} 
-                  className="border-2 border-black py-2 md:py-3 px-6 md:px-8 font-mono font-bold hover:bg-black hover:text-white transition-colors"
-                >
+                <button onClick={() => onOpenChange(false)} className="border-2 border-black py-2 md:py-3 px-6 md:px-8 font-mono font-bold hover:bg-black hover:text-white transition-colors">
                   {content[language].closeButton}
                 </button>
               </div>
@@ -73,8 +57,6 @@ const PromotionalModal: React.FC<PromotionalModalProps> = ({
           </div>
         </div>
       </DialogContent>
-    </Dialog>
-  );
+    </Dialog>;
 };
-
 export default PromotionalModal;
