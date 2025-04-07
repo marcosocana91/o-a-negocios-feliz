@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { getTranslationByCategory, TranslationPair, TranslationCategory } from '../data/translationPairs';
 import TranslateButton from './TranslateButton';
 import ShareButton from './ShareButton';
-import ConfettiEffect from './ConfettiEffect';
 import { useLanguage } from '../context/LanguageContext';
 
 const Translator: React.FC = () => {
@@ -16,11 +15,9 @@ const Translator: React.FC = () => {
     family: ""
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [confettiTrigger, setConfettiTrigger] = useState(false);
   
   const generateTranslation = () => {
     setIsLoading(true);
-    setConfettiTrigger(prev => !prev); // Toggle to trigger confetti
     
     // Simulamos una pequeña demora para dar efecto de "traducción"
     setTimeout(() => {
@@ -37,8 +34,6 @@ const Translator: React.FC = () => {
 
   return (
     <div className="max-w-4xl w-full mx-auto border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-      <ConfettiEffect trigger={confettiTrigger} />
-      
       <div className="p-6 sm:p-8 space-y-8">
         {/* Design says box - Principal box */}
         <div>

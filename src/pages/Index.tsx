@@ -1,17 +1,17 @@
+
 import React, { useState, useEffect } from 'react';
 import Translator from '../components/Translator';
 import WelcomeModal from '../components/WelcomeModal';
+import PromotionalModal from '../components/PromotionalModal';
 import Navigation from '../components/Navigation';
 import FooterBanner from '../components/FooterBanner';
 import { useLanguage } from '../context/LanguageContext';
-import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
 import { useIsMobile } from '../hooks/use-mobile';
+
 const Index = () => {
-  const {
-    t
-  } = useLanguage();
-  const [showModal, setShowModal] = useState(true);
+  const { t } = useLanguage();
+  const [showWelcomeModal, setShowWelcomeModal] = useState(true);
+  const [showPromotionalModal, setShowPromotionalModal] = useState(true);
   const [hasVisited, setHasVisited] = useState(false);
   const isMobile = useIsMobile();
 
@@ -19,38 +19,42 @@ const Index = () => {
   useEffect(() => {
     const visited = localStorage.getItem('hasVisited');
     if (visited) {
-      setShowModal(false);
+      setShowWelcomeModal(false);
       setHasVisited(true);
     }
   }, []);
 
-  // Handle modal close
-  const handleCloseModal = () => {
+  // Handle welcome modal close
+  const handleCloseWelcomeModal = () => {
     localStorage.setItem('hasVisited', 'true');
     setHasVisited(true);
-    setShowModal(false);
+    setShowWelcomeModal(false);
   };
-  return <div className="min-h-screen flex flex-col brutalist-grid">
-      {showModal && <WelcomeModal onClose={handleCloseModal} />}
+
+  return (
+    <div className="min-h-screen flex flex-col brutalist-grid">
+      {showWelcomeModal && <WelcomeModal onClose={handleCloseWelcomeModal} />}
+      <PromotionalModal open={showPromotionalModal} onOpenChange={setShowPromotionalModal} />
       
       <Navigation />
       
       <div className="flex-grow container mx-auto px-4 py-8 md:py-16">
-        {!isMobile && <div className="mb-8 md:mb-12 text-center">
-            
+        {!isMobile && (
+          <div className="mb-8 md:mb-12 text-center">
             <p className="text-translator-text/70 text-xs uppercase tracking-wide mb-0 font-mono">
               {t("translator.subtitle")}
             </p>
-          </div>}
+          </div>
+        )}
         
         <Translator />
         
-        {!isMobile && <div className="mt-12 text-center">
-            
-          </div>}
+        {!isMobile && <div className="mt-12 text-center"></div>}
       </div>
       
       <FooterBanner />
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
