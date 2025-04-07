@@ -38,9 +38,16 @@ const Index = () => {
       
       <Navigation />
       
-      <div className="flex-grow container mx-auto px-4 py-8 md:py-16">
+      <div className="flex-grow container mx-auto px-4 pt-8 pb-4 md:pt-16 md:pb-8">
         {!isMobile && (
-          <div className="mb-8 md:mb-12 text-center">
+          <div className="mb-6 md:mb-8 text-center flex flex-col items-center">
+            <div className="mb-4">
+              <img 
+                src="/lovable-uploads/618598fa-3509-4bd8-8308-b734433e1f2d.png" 
+                alt="When Design Says..." 
+                className="h-8"
+              />
+            </div>
             <p className="text-translator-text/70 text-xs uppercase tracking-wide mb-0 font-mono">
               {t("translator.subtitle")}
             </p>
@@ -49,7 +56,7 @@ const Index = () => {
         
         <Translator />
         
-        {!isMobile && <div className="mt-12 text-center"></div>}
+        {!isMobile && <div className="mt-8 text-center"></div>}
       </div>
       
       <FooterBanner />
