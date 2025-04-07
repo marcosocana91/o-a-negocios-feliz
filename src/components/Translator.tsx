@@ -3,10 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { getTranslationByCategory, TranslationPair, TranslationCategory } from '../data/translationPairs';
 import TranslateButton from './TranslateButton';
 import ShareButton from './ShareButton';
-import { ArrowUpDown } from 'lucide-react';
 import ConfettiEffect from './ConfettiEffect';
 import { useLanguage } from '../context/LanguageContext';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const Translator: React.FC = () => {
   const { t, language } = useLanguage();
@@ -18,160 +16,128 @@ const Translator: React.FC = () => {
     family: ""
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [showAnimation, setShowAnimation] = useState(false);
   const [confettiTrigger, setConfettiTrigger] = useState(false);
-  const [direction, setDirection] = useState<'design-to-audience' | 'audience-to-design'>('design-to-audience');
-  const [category, setCategory] = useState<TranslationCategory>('business');
   
   const generateTranslation = () => {
     setIsLoading(true);
-    setShowAnimation(true);
     setConfettiTrigger(prev => !prev); // Toggle to trigger confetti
     
     // Simulamos una pequeña demora para dar efecto de "traducción"
     setTimeout(() => {
-      const newPair = getTranslationByCategory(language as 'es' | 'en', category);
+      const newPair = getTranslationByCategory(language as 'es' | 'en', 'business');
       setTranslationPair(newPair);
       setIsLoading(false);
     }, 600);
   };
 
-  const toggleDirection = () => {
-    setDirection(prev => 
-      prev === 'design-to-audience' ? 'audience-to-design' : 'design-to-audience'
-    );
-  };
-
   // Generar una traducción inicial al cargar
   useEffect(() => {
     generateTranslation();
-  }, [language, category]);
-
-  const getCategoryLabel = (): string => {
-    switch(category) {
-      case 'business':
-        return "Negocio debería entender...";
-      case 'marketing':
-        return "Marketing debería entender...";
-      case 'development':
-        return "Desarrollo debería entender...";
-      case 'family':
-        return "Tu familia debería entender...";
-      default:
-        return "Negocio debería entender...";
-    }
-  }
-
-  const sourceLabel = direction === 'design-to-audience' ? t("translator.designSays") : getCategoryLabel();
-  
-  const getSourceText = () => {
-    if (direction === 'design-to-audience') {
-      return translationPair.design;
-    } else {
-      switch(category) {
-        case 'business': return translationPair.business;
-        case 'marketing': return translationPair.marketing;
-        case 'development': return translationPair.development;
-        case 'family': return translationPair.family;
-        default: return translationPair.business;
-      }
-    }
-  };
-
-  const getTargetText = () => {
-    if (direction === 'design-to-audience') {
-      switch(category) {
-        case 'business': return translationPair.business;
-        case 'marketing': return translationPair.marketing;
-        case 'development': return translationPair.development;
-        case 'family': return translationPair.family;
-        default: return translationPair.business;
-      }
-    } else {
-      return translationPair.design;
-    }
-  };
-
-  const sourceText = getSourceText();
-  const targetText = getTargetText();
+  }, [language]);
 
   return (
-    <div className="max-w-2xl w-full mx-auto border-2 border-black bg-white">
+    <div className="max-w-4xl w-full mx-auto border-2 border-black bg-white">
       <ConfettiEffect trigger={confettiTrigger} />
       
       <div className="p-6 sm:p-8 space-y-8">
+        {/* Design says box - Principal box */}
         <div>
-          <label htmlFor="source-text" className="block text-sm font-mono mb-4 uppercase tracking-wider font-bold">
-            {sourceLabel}
+          <label htmlFor="design-text" className="block text-sm font-mono mb-4 uppercase tracking-wider font-bold">
+            {t("translator.designSays")}
           </label>
           <div
-            id="source-text"
-            className="font-serif text-xl p-5 min-h-[120px] border-2 border-black w-full font-medium"
+            id="design-text"
+            className="font-serif text-xl p-5 min-h-[100px] border-2 border-black w-full font-medium bg-white"
           >
             {isLoading ? (
               <div className="animate-pulse h-6 bg-gray-100 w-3/4 mx-auto mt-4"></div>
             ) : (
-              sourceText
+              translationPair.design
             )}
           </div>
         </div>
         
-        <div className="flex justify-center py-3">
-          <button 
-            onClick={toggleDirection}
-            className="p-2 hover:bg-gray-100 rounded-md transition-colors flex items-center"
-            aria-label="Toggle direction"
-          >
-            <ArrowUpDown className="h-5 w-5 text-black" />
-          </button>
-        </div>
-        
-        <div>
-          {direction === 'design-to-audience' ? (
-            <div className="flex items-center mb-4">
-              <Select 
-                value={category} 
-                onValueChange={(value) => setCategory(value as TranslationCategory)}
-              >
-                <SelectTrigger className="font-mono text-xs border-2 border-black shadow-none p-0 h-auto w-auto font-bold">
-                  <span className="text-sm font-mono uppercase tracking-wider px-3 py-1 text-left">{getCategoryLabel()}</span>
-                </SelectTrigger>
-                <SelectContent className="border-2 border-black">
-                  <SelectItem value="business" className="px-3">Negocio debería entender...</SelectItem>
-                  <SelectItem value="marketing" className="px-3">Marketing debería entender...</SelectItem>
-                  <SelectItem value="development" className="px-3">Desarrollo debería entender...</SelectItem>
-                  <SelectItem value="family" className="px-3">Tu familia debería entender...</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          ) : (
-            <label htmlFor="target-text" className="block text-sm font-mono mb-4 uppercase tracking-wider font-bold">
-              {t("translator.designSays")}:
+        {/* Translations grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Business box */}
+          <div>
+            <label htmlFor="business-text" className="block text-sm font-mono mb-4 uppercase tracking-wider font-bold">
+              Negocio debería entender...
             </label>
-          )}
+            <div
+              id="business-text"
+              className="font-serif text-base p-4 min-h-[100px] border-2 border-black w-full font-medium bg-[#FEF7CD]"
+            >
+              {isLoading ? (
+                <div className="animate-pulse h-5 bg-gray-100 w-3/4 mx-auto mt-4"></div>
+              ) : (
+                translationPair.business
+              )}
+            </div>
+          </div>
           
-          <div
-            id="target-text"
-            className="font-serif text-xl p-5 min-h-[120px] border-2 border-black w-full font-medium"
-          >
-            {isLoading ? (
-              <div className="animate-pulse h-6 bg-gray-100 w-3/4 mx-auto mt-4"></div>
-            ) : (
-              targetText
-            )}
+          {/* Marketing box */}
+          <div>
+            <label htmlFor="marketing-text" className="block text-sm font-mono mb-4 uppercase tracking-wider font-bold">
+              Marketing debería entender...
+            </label>
+            <div
+              id="marketing-text"
+              className="font-serif text-base p-4 min-h-[100px] border-2 border-black w-full font-medium bg-[#D3E4FD]"
+            >
+              {isLoading ? (
+                <div className="animate-pulse h-5 bg-gray-100 w-3/4 mx-auto mt-4"></div>
+              ) : (
+                translationPair.marketing
+              )}
+            </div>
+          </div>
+          
+          {/* Development box */}
+          <div>
+            <label htmlFor="development-text" className="block text-sm font-mono mb-4 uppercase tracking-wider font-bold">
+              Desarrollo debería entender...
+            </label>
+            <div
+              id="development-text"
+              className="font-serif text-base p-4 min-h-[100px] border-2 border-black w-full font-medium bg-[#E5DEFF]"
+            >
+              {isLoading ? (
+                <div className="animate-pulse h-5 bg-gray-100 w-3/4 mx-auto mt-4"></div>
+              ) : (
+                translationPair.development
+              )}
+            </div>
+          </div>
+          
+          {/* Family box */}
+          <div>
+            <label htmlFor="family-text" className="block text-sm font-mono mb-4 uppercase tracking-wider font-bold">
+              Tu familia debería entender...
+            </label>
+            <div
+              id="family-text"
+              className="font-serif text-base p-4 min-h-[100px] border-2 border-black w-full font-medium bg-[#FFDEE2]"
+            >
+              {isLoading ? (
+                <div className="animate-pulse h-5 bg-gray-100 w-3/4 mx-auto mt-4"></div>
+              ) : (
+                translationPair.family
+              )}
+            </div>
           </div>
         </div>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-          <TranslateButton onClick={generateTranslation} text={t("translator.translate")} />
-          {!isLoading && sourceText && (
+          <TranslateButton onClick={generateTranslation} text="Generar" />
+          {!isLoading && translationPair.design && (
             <ShareButton 
               designText={translationPair.design}
               businessText={translationPair.business}
               marketingText={translationPair.marketing}
               developmentText={translationPair.development}
               familyText={translationPair.family}
-              currentCategory={category}
+              currentCategory="business"
             />
           )}
         </div>
