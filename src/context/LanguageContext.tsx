@@ -20,14 +20,14 @@ const translations = {
     // Translator
     "translator.title": "When design says...",
     "translator.subtitle": "Diseño y negocio. Encontrando un lenguaje común",
-    "translator.designSays": "Cuando el diseño dice",
-    "translator.businessUnderstands": "Negocio debería entender",
-    "translator.marketingUnderstands": "Marketing debería entender",
-    "translator.developmentUnderstands": "Desarrollo debería entender",
-    "translator.familyUnderstands": "Tu familia debería entender",
+    "translator.designSays": "Cuando el diseño dice...",
+    "translator.businessUnderstands": "El negocio debería entender...",
+    "translator.marketingUnderstands": "Marketing debería entender...",
+    "translator.developmentUnderstands": "Desarrollo debería entender...",
+    "translator.familyUnderstands": "Tu familia debería entender...",
     "translator.businessSays": "Cuando el negocio dice",
     "translator.designUnderstands": "El diseño entiende",
-    "translator.translate": "Traducir",
+    "translator.translate": "Generar",
     "translator.share": "Compartir",
     "translator.footer": "Diseño y negocio. Dos mundos, un lenguaje.",
     "translator.selectAudience": "Selecciona audiencia",
@@ -38,7 +38,7 @@ const translations = {
     
     // Share
     "share.designSays": "Cuando el diseño dice",
-    "share.businessUnderstands": "Negocio debería entender",
+    "share.businessUnderstands": "El negocio debería entender",
     "share.marketingUnderstands": "Marketing debería entender",
     "share.developmentUnderstands": "Desarrollo debería entender",
     "share.familyUnderstands": "Tu familia debería entender",
@@ -75,14 +75,14 @@ const translations = {
     // Translator
     "translator.title": "When design says...",
     "translator.subtitle": "Design and business. Finding a common language",
-    "translator.designSays": "When design says",
-    "translator.businessUnderstands": "Business should understand",
-    "translator.marketingUnderstands": "Marketing should understand",
-    "translator.developmentUnderstands": "Development should understand", 
-    "translator.familyUnderstands": "Your family should understand",
+    "translator.designSays": "When design says...",
+    "translator.businessUnderstands": "Business should understand...",
+    "translator.marketingUnderstands": "Marketing should understand...",
+    "translator.developmentUnderstands": "Development should understand...", 
+    "translator.familyUnderstands": "Your family should understand...",
     "translator.businessSays": "When business says",
     "translator.designUnderstands": "Design understands",
-    "translator.translate": "Translate",
+    "translator.translate": "Generate",
     "translator.share": "Share",
     "translator.footer": "Design and business. Two worlds, one language.",
     "translator.selectAudience": "Select audience",
@@ -128,6 +128,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   // Make sure useState is being used properly
   const [language, setLanguage] = useState<Language>(() => {
+    // Check if window exists (to avoid SSR issues)
     if (typeof window !== 'undefined') {
       const savedLanguage = localStorage.getItem("language");
       return (savedLanguage as Language) || "es";

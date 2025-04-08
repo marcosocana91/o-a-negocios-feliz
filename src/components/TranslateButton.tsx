@@ -28,7 +28,7 @@ const TranslateButton: React.FC<TranslateButtonProps> = ({ onClick, text }) => {
   };
 
   // Use provided text or determine based on language
-  const buttonText = text || (language === 'en' ? "Generate" : "Traducir");
+  const buttonText = text || t("translator.translate");
 
   return (
     <button 
