@@ -60,13 +60,13 @@ const Translator: React.FC = () => {
             <label htmlFor="marketing-text" className="block text-sm font-mono mb-4 uppercase tracking-wider font-bold">
               Marketing debería entender...
             </label>
-            <div id="marketing-text" className="font-serif text-base p-4 min-h-[100px] border-2 border-black w-full font-medium bg-[#E9F4FF] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div id="marketing-text" className="my-[14px]">
               {isLoading ? <div className="animate-pulse h-5 bg-gray-100 w-3/4 mx-auto mt-4"></div> : translationPair.marketing}
             </div>
           </div>
           
           {/* Development box */}
-          <div className="py-0 my-[14px]">
+          <div>
             <label htmlFor="development-text" className="block text-sm font-mono mb-4 uppercase tracking-wider font-bold">
               Desarrollo debería entender...
             </label>
