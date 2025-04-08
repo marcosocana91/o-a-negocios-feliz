@@ -5,9 +5,10 @@ import { useLanguage } from '../context/LanguageContext';
 
 interface TranslateButtonProps {
   onClick: () => void;
+  text?: string; // Made this optional
 }
 
-const TranslateButton: React.FC<TranslateButtonProps> = ({ onClick }) => {
+const TranslateButton: React.FC<TranslateButtonProps> = ({ onClick, text }) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const { language, t } = useLanguage();
 
@@ -26,8 +27,8 @@ const TranslateButton: React.FC<TranslateButtonProps> = ({ onClick }) => {
     }, 500);
   };
 
-  // Use "Generate" for English, "Traducir" for Spanish
-  const buttonText = language === 'en' ? "Generate" : "Traducir";
+  // Use provided text or determine based on language
+  const buttonText = text || (language === 'en' ? "Generate" : "Traducir");
 
   return (
     <button 

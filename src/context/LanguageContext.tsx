@@ -122,16 +122,23 @@ const translations = {
   }
 };
 
+// Create the context with a default undefined value
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
+  // Make sure useState is being used properly
   const [language, setLanguage] = useState<Language>(() => {
-    const savedLanguage = localStorage.getItem("language");
-    return (savedLanguage as Language) || "es";
+    if (typeof window !== 'undefined') {
+      const savedLanguage = localStorage.getItem("language");
+      return (savedLanguage as Language) || "es";
+    }
+    return "es";
   });
 
   useEffect(() => {
-    localStorage.setItem("language", language);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem("language", language);
+    }
   }, [language]);
 
   const t = (key: string): string => {

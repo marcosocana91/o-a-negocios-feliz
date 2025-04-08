@@ -1,11 +1,18 @@
+
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { 
+  Dialog, 
+  DialogContent,
+  DialogTitle
+} from "@/components/ui/dialog";
 import { useIsMobile } from '../hooks/use-mobile';
+
 interface PromotionalModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
+
 const PromotionalModal: React.FC<PromotionalModalProps> = ({
   open,
   onOpenChange
@@ -28,8 +35,11 @@ const PromotionalModal: React.FC<PromotionalModalProps> = ({
       closeButton: "Close"
     }
   };
-  return <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="p-0 border-none max-w-2xl">
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="p-0 border-none max-w-2xl" aria-describedby="promo-description">
+        <DialogTitle className="sr-only">{content[language].title}</DialogTitle>
         <div className="bg-[#F8DE29] text-black border-2 border-black">
           <div className="px-4 py-6 flex flex-col items-center md:px-[24px] md:py-[24px]">
             <div className="w-full max-w-md mx-auto border-2 border-black">
@@ -41,7 +51,7 @@ const PromotionalModal: React.FC<PromotionalModalProps> = ({
                 {content[language].title}
               </h2>
               
-              <p className="font-mono text-sm md:text-lg">
+              <p id="promo-description" className="font-mono text-sm md:text-lg">
                 {content[language].description}
               </p>
               
@@ -57,6 +67,8 @@ const PromotionalModal: React.FC<PromotionalModalProps> = ({
           </div>
         </div>
       </DialogContent>
-    </Dialog>;
+    </Dialog>
+  );
 };
+
 export default PromotionalModal;

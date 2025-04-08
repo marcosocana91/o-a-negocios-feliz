@@ -124,7 +124,7 @@ const Translator: React.FC = () => {
         </div>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-          <TranslateButton onClick={generateTranslation} text="Generar" />
+          <TranslateButton onClick={generateTranslation} />
           {!isLoading && translationPair.design && (
             <ShareButton 
               designText={translationPair.design}
