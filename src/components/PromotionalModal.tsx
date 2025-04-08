@@ -47,7 +47,7 @@ const PromotionalModal: React.FC<PromotionalModalProps> = ({
             </div>
             
             <div className="text-center mt-3 md:mt-4 space-y-2 md:space-y-3">
-              <h2 className="font-mono text-base md:text-xl font-bold">
+              <h2 className="font-mono text-sm md:text-xl font-bold">
                 {content[language].title}
               </h2>
               
@@ -56,10 +56,10 @@ const PromotionalModal: React.FC<PromotionalModalProps> = ({
               </p>
               
               <div className="mt-3 md:mt-4 flex flex-row gap-2 md:gap-3 justify-center items-center">
-                <a href="https://www.amazon.es/Workbook-para-Dise%C3%B1adores-producto-gr%C3%A1ficos/dp/B0DLTT5WNM" target="_blank" rel="noopener noreferrer" className="bg-black text-white font-mono py-1.5 md:py-2 px-3 md:px-4 inline-block hover:bg-opacity-80 transition-colors text-xs md:text-sm font-bold">
+                <a href="https://www.amazon.es/Workbook-para-Dise%C3%B1adores-producto-gr%C3%A1ficos/dp/B0DLTT5WNM" target="_blank" rel="noopener noreferrer" className="bg-black text-white font-mono py-2 px-4 md:py-2.5 md:px-5 inline-block hover:bg-opacity-80 transition-colors text-sm md:text-base font-bold">
                   {content[language].buttonText}
                 </a>
-                <button onClick={() => onOpenChange(false)} className="border-2 border-black py-1.5 md:py-2 px-3 md:px-4 font-mono text-xs md:text-sm font-bold hover:bg-black hover:text-white transition-colors">
+                <button onClick={() => onOpenChange(false)} className="border-2 border-black py-2 px-4 md:py-2.5 md:px-5 font-mono text-sm md:text-base font-bold hover:bg-black hover:text-white transition-colors">
                   {content[language].closeButton}
                 </button>
               </div>
