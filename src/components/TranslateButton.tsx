@@ -5,12 +5,11 @@ import { useLanguage } from '../context/LanguageContext';
 
 interface TranslateButtonProps {
   onClick: () => void;
-  text?: string; // Made this optional
 }
 
-const TranslateButton: React.FC<TranslateButtonProps> = ({ onClick, text }) => {
+const TranslateButton: React.FC<TranslateButtonProps> = ({ onClick }) => {
   const [isAnimating, setIsAnimating] = useState(false);
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
 
   const handleClick = () => {
     setIsAnimating(true);
@@ -27,15 +26,12 @@ const TranslateButton: React.FC<TranslateButtonProps> = ({ onClick, text }) => {
     }, 500);
   };
 
-  // Always use "Generate" text
-  const buttonText = t("translator.translate"); // This will be "Generate" based on translations
-
   return (
     <button 
       className={`flex items-center justify-center gap-2 py-2 px-8 bg-black text-white font-mono text-sm uppercase hover:bg-white hover:text-black hover:border-2 hover:border-black transition-colors ${isAnimating ? 'animate-bounce-light' : ''}`}
       onClick={handleClick}
     >
-      <span>{buttonText}</span>
+      <span>{t("translator.translate")}</span>
       <ArrowRight className="h-4 w-4" />
     </button>
   );

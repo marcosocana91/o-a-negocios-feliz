@@ -7,9 +7,6 @@ import { TranslationCategory } from '../data/translationPairs';
 interface ShareButtonProps {
   designText: string;
   businessText: string;
-  marketingText: string;
-  developmentText: string;
-  familyText: string;
   currentCategory: TranslationCategory;
 }
 

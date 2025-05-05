@@ -13,10 +13,7 @@ const Translator: React.FC = () => {
   } = useLanguage();
   const [translationPair, setTranslationPair] = useState<TranslationPair>({
     design: "",
-    business: "",
-    marketing: "",
-    development: "",
-    family: ""
+    business: ""
   });
   const [isLoading, setIsLoading] = useState(false);
   const [reverseDirection, setReverseDirection] = useState(false);
@@ -89,14 +86,11 @@ const Translator: React.FC = () => {
         </div>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-          <TranslateButton onClick={generateTranslation} text={t("translator.translate")} />
+          <TranslateButton onClick={generateTranslation} />
           {!isLoading && translationPair.design && 
             <ShareButton 
               designText={translationPair.design} 
-              businessText={translationPair.business} 
-              marketingText="" 
-              developmentText="" 
-              familyText="" 
+              businessText={translationPair.business}
               currentCategory="business" 
             />
           }
