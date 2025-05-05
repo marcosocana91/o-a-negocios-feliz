@@ -15,30 +15,16 @@ interface ShareButtonProps {
 
 const ShareButton: React.FC<ShareButtonProps> = ({ 
   designText, 
-  businessText,
-  marketingText,
-  developmentText,
-  familyText,
-  currentCategory
+  businessText
 }) => {
   const [isSharing, setIsSharing] = useState(false);
   const { t } = useLanguage();
 
-  const getCategoryText = (): string => {
-    switch(currentCategory) {
-      case 'business': return businessText;
-      case 'marketing': return marketingText;
-      case 'development': return developmentText;
-      case 'family': return familyText;
-      default: return businessText;
-    }
-  }
-
   const handleShare = async () => {
     setIsSharing(true);
     
-    // Create text to share
-    const shareText = `💬 ${t("share.designSays")}:\n"${designText}"\n\n🔄 ${t(`share.${currentCategory}Understands`)}:\n"${getCategoryText()}"\n\nwhendesignsays.com`;
+    // Create text to share - simplified to just design and business
+    const shareText = `💬 ${t("share.designSays")}:\n"${designText}"\n\n🔄 ${t("share.businessUnderstands")}:\n"${businessText}"\n\nwhendesignsays.com`;
     
     try {
       if (navigator.share) {

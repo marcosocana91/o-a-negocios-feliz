@@ -17,7 +17,7 @@ const About: React.FC = () => {
             {t("about.title")}
           </h1>
           
-          <div className="font-sans text-lg space-y-6">
+          <div className="font-mono text-lg space-y-6">
             <p>
               {t("about.p1")}
             </p>
